@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_splash_screen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorHeader">
+
+    <TextView
+        android:textColor="@color/colorSplashtext"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:background="@color/colorWhite"
+        android:fontFamily="sans-serif-smallcaps"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="40dp"
+        android:paddingRight="10dp"
+        android:text="Teacher Kit"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:textColor="@color/colorSplashtext"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:background="@color/colorWhite"
+        android:fontFamily="sans-serif-smallcaps"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:paddingRight="10dp"
+        android:text="Classroom"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:textColor="@color/colorSplashtext"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:background="@color/colorWhite"
+        android:fontFamily="sans-serif-smallcaps"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:paddingRight="10dp"
+        android:text="Management"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:textColor="@color/colorSplashtext"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:background="@color/colorWhite"
+        android:fontFamily="sans-serif-smallcaps"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:paddingRight="10dp"
+        android:text="Tool for"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+    <TextView
+        android:textColor="@color/colorSplashtext"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:background="@color/colorWhite"
+        android:fontFamily="sans-serif-smallcaps"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:paddingRight="10dp"
+        android:text="Attendance,"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:textColor="@color/colorSplashtext"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:background="@color/colorWhite"
+        android:fontFamily="sans-serif-smallcaps"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:paddingRight="10dp"
+        android:text="Reporting"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+    <TextView
+        android:textColor="@color/colorSplashtext"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:background="@color/colorWhite"
+        android:fontFamily="sans-serif-smallcaps"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:paddingRight="10dp"
+        android:text="and More!"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:fontFamily="sans-serif-smallcaps"
+        android:gravity="center|bottom"
+        android:textColor="@color/colorWhite"
+        android:paddingLeft="10dp"
+        android:layout_marginBottom="20dp"
+        android:paddingRight="10dp"
+        android:text="By CloverInfosoft"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+</LinearLayout>

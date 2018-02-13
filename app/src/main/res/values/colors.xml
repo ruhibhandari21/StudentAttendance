@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#006064</color>
+    <color name="colorPrimaryDark">#006064</color>
+    <color name="colorAccent">#006064</color>
+
+    <color name="colorHeader">#00B8D4</color>
+    <color name="colorPopupBg">#EEEEEE</color>
+    <color name="colorLine">#DCDCDC</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorSplashtext">#01579B</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorBtnBg">#263238</color>
+    <color name="colorBlue">#1565C0</color>
+    <color name="colorOrange">#E65100</color>
+    <color name="colorLightGrayBg">#E0E0E0</color>
+    <color name="colorLightBlack">#212121</color>
+    <color name="colorViewAllBG">#00ACC1</color>
+
+</resources>

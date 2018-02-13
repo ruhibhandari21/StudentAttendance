@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">StudentManagement</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="admission_no">Admission No <font color='#FF0000'>*</font></string>
+    <string name="classstr">Class <font color='#FF0000'>*</font></string>
+    <string name="gender">Gender <font color='#FF0000'>*</font></string>
+    <string name="dofReg">Date Of Registration <font color='#FF0000'>*</font></string>
+    <string name="feeeffect">Fee Effective From </string>
+    <string name="studfullname">Students Full Name <font color='#FF0000'>*</font></string>
+    <string name="emailid">EmailID <font color='#FF0000'>*</font></string>
+
+    <string name="subject_name">Subject Name <font color='#FF0000'>*</font></string>
+    <string name="subject_abbreviation">Abbreviation <font color='#FF0000'>*</font></string>
+    <string name="subject_for_classes">Subject For Classes <font color='#FF0000'>*</font></string>
+
+    <string name="class_name">Class Name <font color='#FF0000'>*</font></string>
+    <string name="class_abbreviation">Class Abbreviation <font color='#FF0000'>*</font></string>
+
+
+    <string name="teacher_full_name">Full Name <font color='#FF0000'>*</font></string>
+    <string name="teacher_position">Position <font color='#FF0000'>*</font></string>
+    <string name="teacher_email_id">EmailID <font color='#FF0000'>*</font></string>
+    <string name="teacher_mobile_no">Mobile no <font color='#FF0000'>*</font></string>
+    <string name="user_type">User Type <font color='#FF0000'>*</font></string>
+    <string name="teacher_username">Username <font color='#FF0000'>*</font></string>
+    <string name="teacher_password">Password <font color='#FF0000'>*</font></string>
+
+</resources>
