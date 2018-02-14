@@ -32,15 +32,15 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         initUI();
         initListener();
 
-        if(preferencesManager.getRole()=="1")
+        if(preferencesManager.getRole().equals("1"))
         {
             callSetupFragment(SCREENS.ADMIN_HOME, null);
         }
-        else if(preferencesManager.getRole()=="2")
+        else if(preferencesManager.getRole().equals("2"))
         {
             callSetupFragment(SCREENS.TEACHER_HOME, null);
         }
-        else if(preferencesManager.getRole()=="3")
+        else if(preferencesManager.getRole().equals("3"))
         {
             callSetupFragment(SCREENS.STUDENT_HOME, null);
         }
