@@ -36,18 +36,9 @@ public class SplashScreen extends AppCompatActivity {
                 }
                 else if(!preferencesManager.getUserId().equals(""))
                 {
-                    switch(preferencesManager.getRole())
-                    {
-                        case "1"://admin
-                            final Intent mainIntent = new Intent(SplashScreen.this, DashboardActivity.class);
-                            SplashScreen.this.startActivity(mainIntent);
-                            SplashScreen.this.finish();
-                            break;
-                        case "2":
-                            break;
-                        case "3":
-                            break;
-                    }
+                    final Intent mainIntent = new Intent(SplashScreen.this, DashboardActivity.class);
+                    SplashScreen.this.startActivity(mainIntent);
+                    SplashScreen.this.finish();
                 }
 
 
