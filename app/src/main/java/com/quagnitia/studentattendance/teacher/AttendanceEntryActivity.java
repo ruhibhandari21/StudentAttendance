@@ -149,6 +149,7 @@ public class AttendanceEntryActivity extends AppCompatActivity implements View.O
 
                 case "updateStudentByClassname":
                     selectedStudentList="";
+                    finish();
                     break;
 
                 case "getAllStudentByClassname":
