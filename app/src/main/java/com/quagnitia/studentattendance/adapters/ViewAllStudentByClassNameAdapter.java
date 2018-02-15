@@ -89,6 +89,11 @@ public class ViewAllStudentByClassNameAdapter extends RecyclerView.Adapter<ViewA
         holder.chk_present.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(holder.chk_absent.isChecked())
+                {
+                    holder.chk_absent.setChecked(false);
+                    studentsList.get(position).setAbsent("0");
+                }
                 if(!isChecked)
                 {
                     holder.chk_present.setChecked(false);
@@ -107,6 +112,11 @@ public class ViewAllStudentByClassNameAdapter extends RecyclerView.Adapter<ViewA
         holder.chk_absent.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(holder.chk_present.isChecked())
+                {
+                    holder.chk_present.setChecked(false);
+                    studentsList.get(position).setPresent("0");
+                }
                 if(!isChecked)
                 {
                     holder.chk_absent.setChecked(false);

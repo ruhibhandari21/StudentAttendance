@@ -107,6 +107,7 @@ public class AttendanceEntryActivity extends AppCompatActivity implements View.O
                 callUpdateAllStudentWS();
                 break;
             case R.id.btn_cancel:
+            case R.id.img_back:
                 finish();
                 break;
         }
@@ -134,6 +135,8 @@ public class AttendanceEntryActivity extends AppCompatActivity implements View.O
                             ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_spinner_item, list);
                             aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                             sp_class.setAdapter(aa);
+                            callGetAllStudentWS(sp_class.getSelectedItem().toString());
+
                         } else {
                             tv_no_records.setVisibility(View.VISIBLE);
                             recycler_view.setVisibility(View.GONE);
