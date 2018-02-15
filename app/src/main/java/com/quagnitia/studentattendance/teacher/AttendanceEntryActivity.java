@@ -59,7 +59,7 @@ public class AttendanceEntryActivity extends AppCompatActivity implements View.O
 
     public void initUI() {
         tv_no_records = (TextView) findViewById(R.id.tv_no_records);
-        recycler_view = (RecyclerView) findViewById(R.id.recycler_view_classes);
+        recycler_view = (RecyclerView) findViewById(R.id.recycler_view);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recycler_view.setLayoutManager(mLayoutManager);
         recycler_view.setItemAnimator(new DefaultItemAnimator());
