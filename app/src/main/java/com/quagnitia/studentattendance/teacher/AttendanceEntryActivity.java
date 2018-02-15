@@ -83,6 +83,7 @@ public class AttendanceEntryActivity extends AppCompatActivity implements View.O
         btn_save.setOnClickListener(this);
         btn_cancel.setOnClickListener(this);
         img_back.setOnClickListener(this);
+        sp_class.setOnItemSelectedListener(this);
     }
 
     public void callGetAllClassWS() {
@@ -173,7 +174,7 @@ public class AttendanceEntryActivity extends AppCompatActivity implements View.O
                             ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_spinner_item, list);
                             aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                             sp_class.setAdapter(aa);
-                            callGetAllStudentWS(sp_class.getSelectedItem().toString());
+                           // callGetAllStudentWS(sp_class.getSelectedItem().toString());
 
                         } else {
                             tv_no_records.setVisibility(View.VISIBLE);
@@ -305,6 +306,8 @@ public class AttendanceEntryActivity extends AppCompatActivity implements View.O
 
     @Override
     public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
+        if(studentList!=null)
+        studentList.clear();
         callGetAllStudentWS(list.get(position));
     }
 
