@@ -5,6 +5,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="admission_no">Admission No <font color='#FF0000'>*</font></string>
     <string name="classstr">Class <font color='#FF0000'>*</font></string>
+    <string name="Student">Student <font color='#FF0000'>*</font></string>
     <string name="gender">Gender <font color='#FF0000'>*</font></string>
     <string name="dofReg">Date Of Registration <font color='#FF0000'>*</font></string>
     <string name="feeeffect">Fee Effective From </string>
