@@ -127,15 +127,12 @@ public class AttendanceEntryActivity extends AppCompatActivity implements View.O
                     JSONArray jsonArray=new JSONArray();
                     for(int i=0;i<studentList.size();i++)
                     {
-                        if(studentList.get(i).getAbsent()=="1" || studentList.get(i).getPresent()=="1" )
-                        {
+
                             JSONObject jsonObject=new JSONObject();
                             jsonObject.put("UserId",studentList.get(i).getUserid());
                             jsonObject.put("Present",studentList.get(i).getPresent());
                             jsonObject.put("Absent",studentList.get(i).getAbsent());
                             jsonArray.put(jsonObject);
-                        }
-
 
                     }
                     selectedStudentList=jsonArray.toString();
