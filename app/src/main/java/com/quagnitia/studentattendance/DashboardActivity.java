@@ -45,7 +45,6 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             callSetupFragment(SCREENS.STUDENT_HOME, null);
         }
 
-
     }
 
     public void initUI() {

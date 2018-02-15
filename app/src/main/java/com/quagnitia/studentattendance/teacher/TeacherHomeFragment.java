@@ -1,5 +1,6 @@
 package com.quagnitia.studentattendance.teacher;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -21,6 +22,8 @@ public class TeacherHomeFragment extends Fragment implements View.OnClickListene
     private View view;
     private RelativeLayout rel_attendance_report,rel_attendance_entry,rel_add_exam,rel_exam_results,rel_view_timetable,rel_add_homework;
     private Intent intent;
+    private Context mContext;
+
 
 
     public TeacherHomeFragment() {
@@ -49,7 +52,8 @@ public class TeacherHomeFragment extends Fragment implements View.OnClickListene
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view=inflater.inflate(R.layout.fragment_admin_home, container, false);
+        view=inflater.inflate(R.layout.fragment_teacher_home, container, false);
+        mContext=getActivity();
         initUI();
         initListener();
         return view;

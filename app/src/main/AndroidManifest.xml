@@ -58,7 +58,8 @@
         <activity
             android:name=".initials.RoleSelectionActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".admin.ViewAllStudentActivity"></activity>
+        <activity android:name=".admin.ViewAllStudentActivity" />
+        <activity android:name=".teacher.AttendanceEntryActivity"></activity>
     </application>
 
 </manifest>

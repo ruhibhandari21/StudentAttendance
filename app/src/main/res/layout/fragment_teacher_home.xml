@@ -25,9 +25,10 @@
                 android:src="@drawable/ic_attendance_report"
                 android:id="@+id/img1"
                 android:layout_margin="10dp"
+                android:layout_alignParentTop="true"
                 android:layout_centerInParent="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
 
                 />
             <TextView
@@ -61,9 +62,10 @@
                 android:layout_margin="10dp"
                 android:src="@drawable/ic_attendance_entry"
                 android:id="@+id/img2"
+                android:layout_alignParentTop="true"
                 android:layout_centerInParent="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
 
                 />
             <TextView
@@ -103,9 +105,10 @@
                 android:layout_margin="10dp"
                 android:src="@drawable/ic_add_exam"
                 android:id="@+id/img3"
+                android:layout_alignParentTop="true"
                 android:layout_centerInParent="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
 
                 />
             <TextView
@@ -136,9 +139,10 @@
                 android:layout_margin="10dp"
                 android:src="@drawable/ic_exam_results"
                 android:id="@+id/img4"
+                android:layout_alignParentTop="true"
                 android:layout_centerInParent="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
 
                 />
             <TextView
@@ -178,9 +182,10 @@
                 android:layout_margin="10dp"
                 android:src="@drawable/ic_view_timetable"
                 android:id="@+id/img5"
+                android:layout_alignParentTop="true"
                 android:layout_centerInParent="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
 
                 />
             <TextView
@@ -211,9 +216,10 @@
                 android:layout_margin="10dp"
                 android:src="@drawable/ic_add_homework"
                 android:id="@+id/img6"
+                android:layout_alignParentTop="true"
                 android:layout_centerInParent="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
 
                 />
             <TextView
