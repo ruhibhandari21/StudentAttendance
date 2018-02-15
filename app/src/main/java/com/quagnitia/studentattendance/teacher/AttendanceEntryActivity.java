@@ -30,7 +30,10 @@ import com.quagnitia.studentattendance.models.GetAllStudents;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -39,6 +42,7 @@ public class AttendanceEntryActivity extends AppCompatActivity implements View.O
     private Button btn_save, btn_cancel;
     private ImageView img_back;
     private Context mContext;
+    private TextView tv_current_date;
     private RecyclerView recycler_view;
     private TextView tv_no_records;
     private List<String> list = new ArrayList<>();
@@ -64,9 +68,14 @@ public class AttendanceEntryActivity extends AppCompatActivity implements View.O
         recycler_view.setLayoutManager(mLayoutManager);
         recycler_view.setItemAnimator(new DefaultItemAnimator());
         btn_save = (Button) findViewById(R.id.btn_save);
+        tv_current_date=(TextView)findViewById(R.id.tv_current_date);
         btn_cancel = (Button) findViewById(R.id.btn_cancel);
         img_back = (ImageView) findViewById(R.id.img_back);
         sp_class = (Spinner) findViewById(R.id.sp_class);
+        Date c = Calendar.getInstance().getTime();
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+        String formattedDate = df.format(c);
+        tv_current_date.setText("Attendance For Current Date:"+formattedDate);
     }
 
 
@@ -88,6 +97,10 @@ public class AttendanceEntryActivity extends AppCompatActivity implements View.O
 
     public void callUpdateAllStudentWS() {
         HashMap hashMap=new HashMap();
+        Date c = Calendar.getInstance().getTime();
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+        String formattedDate = df.format(c);
+        hashMap.put("CurrentDate",formattedDate);
         hashMap.put("Classname",sp_class.getSelectedItem().toString());
         hashMap.put("StudentList",selectedStudentList);
         new WebService(this, this, hashMap, "updateStudentByClassname").execute(AppConstants.BASE_URL + AppConstants.UPDATE_STUDENT_BY_CLASSNAME);
@@ -99,12 +112,31 @@ public class AttendanceEntryActivity extends AppCompatActivity implements View.O
         switch (v.getId()) {
             case R.id.btn_save:
                 String s="";
-                for(int i=0;i<studentList.size();i++)
+                try
                 {
-                    s=s+studentList.get(i).getUserid()+",";
+
+                    JSONArray jsonArray=new JSONArray();
+                    for(int i=0;i<studentList.size();i++)
+                    {
+                        if(studentList.get(i).getAbsent()=="1" || studentList.get(i).getPresent()=="1" )
+                        {
+                            JSONObject jsonObject=new JSONObject();
+                            jsonObject.put("UserId",studentList.get(i).getUserid());
+                            jsonObject.put("Present",studentList.get(i).getPresent());
+                            jsonObject.put("Absent",studentList.get(i).getAbsent());
+                            jsonArray.put(jsonObject);
+                        }
+
+
+                    }
+                    selectedStudentList=jsonArray.toString();
+                    callUpdateAllStudentWS();
                 }
-                selectedStudentList=s;
-                callUpdateAllStudentWS();
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+
                 break;
             case R.id.btn_cancel:
             case R.id.img_back:

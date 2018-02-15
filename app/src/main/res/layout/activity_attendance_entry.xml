@@ -50,10 +50,23 @@
                     />
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/tv_current_date"
+                android:layout_margin="10dp"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@android:color/holo_red_dark"
+                android:text="Attendance For Current Date:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
             <android.support.v7.widget.RecyclerView
                 android:layout_below="@+id/header"
                 android:layout_marginTop="10dp"
                 android:id="@+id/recycler_view"
+                android:background="@color/colorWhite"
                 android:scrollbars="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
