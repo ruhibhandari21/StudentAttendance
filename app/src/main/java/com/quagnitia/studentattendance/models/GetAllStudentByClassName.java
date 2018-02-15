@@ -18,24 +18,27 @@ public class GetAllStudentByClassName {
     String password="";
     String userid="";
     String emailid="";
-    boolean present=false;
-    boolean absent=false;
 
-    public boolean isPresent() {
+    public String getPresent() {
         return present;
     }
 
-    public void setPresent(boolean present) {
+    public void setPresent(String present) {
         this.present = present;
     }
 
-    public boolean isAbsent() {
+    public String getAbsent() {
         return absent;
     }
 
-    public void setAbsent(boolean absent) {
+    public void setAbsent(String absent) {
         this.absent = absent;
     }
+
+    String present="0";
+    String absent="0";
+
+
 
     public String getPassword() {
         return password;

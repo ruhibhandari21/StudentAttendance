@@ -66,7 +66,7 @@ public class ViewAllStudentByClassNameAdapter extends RecyclerView.Adapter<ViewA
         GetAllStudentByClassName getAllStudents = studentsList.get(position);
         holder.tv_classname.setText(getAllStudents.getFullname());
 
-        if(studentsList.get(position).isPresent())
+        if(studentsList.get(position).getPresent().equals("1"))
         {
             holder.chk_present.setChecked(true);
         }
@@ -75,7 +75,7 @@ public class ViewAllStudentByClassNameAdapter extends RecyclerView.Adapter<ViewA
             holder.chk_present.setChecked(false);
         }
 
-        if(studentsList.get(position).isAbsent())
+        if(studentsList.get(position).getAbsent().equals("1"))
         {
             holder.chk_absent.setChecked(true);
         }
@@ -91,12 +91,12 @@ public class ViewAllStudentByClassNameAdapter extends RecyclerView.Adapter<ViewA
                 if(!isChecked)
                 {
                     holder.chk_present.setChecked(false);
-                    studentsList.get(position).setPresent(false);
+                    studentsList.get(position).setPresent("0");
                 }
                 else
                 {
                     holder.chk_present.setChecked(true);
-                    studentsList.get(position).setPresent(true);
+                    studentsList.get(position).setPresent("1");
                 }
                 notifyDataSetChanged();
             }
@@ -108,12 +108,12 @@ public class ViewAllStudentByClassNameAdapter extends RecyclerView.Adapter<ViewA
                 if(!isChecked)
                 {
                     holder.chk_absent.setChecked(false);
-                    studentsList.get(position).setAbsent(false);
+                    studentsList.get(position).setAbsent("0");
                 }
                 else
                 {
                     holder.chk_absent.setChecked(true);
-                    studentsList.get(position).setAbsent(true);
+                    studentsList.get(position).setAbsent("1");
                 }
                 notifyDataSetChanged();
             }

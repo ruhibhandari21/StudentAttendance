@@ -155,8 +155,8 @@ public class AttendanceEntryActivity extends AppCompatActivity implements View.O
                                 getAllStudents.setClassname(jsonObject1.optString("Classname"));
                                 getAllStudents.setUsername(jsonObject1.optString("Username"));
                                 getAllStudents.setPassword(jsonObject1.optString("Password"));
-                                getAllStudents.setPresent(jsonObject1.optBoolean("Present"));
-                                getAllStudents.setAbsent(jsonObject1.optBoolean("Absent"));
+                                getAllStudents.setPresent(jsonObject1.optString("Present"));
+                                getAllStudents.setAbsent(jsonObject1.optString("Absent"));
                                 studentList.add(getAllStudents);
                             }
                             tv_no_records.setVisibility(View.GONE);

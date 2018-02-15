@@ -213,6 +213,8 @@ public class AddStudentActivity extends AppCompatActivity implements View.OnClic
         hashMap.put("MobileNo", edt_mobileno.getText().toString());
         hashMap.put("Username", edt_username.getText().toString());
         hashMap.put("Password", edt_password.getText().toString());
+        hashMap.put("Present","0");
+        hashMap.put("Absent","0");
 
         new WebService(this, this, hashMap, "addStudent").execute(AppConstants.BASE_URL + AppConstants.ADD_STUDENT);
     }
@@ -233,6 +235,8 @@ public class AddStudentActivity extends AppCompatActivity implements View.OnClic
         hashMap.put("MobileNo", edt_mobileno.getText().toString());
         hashMap.put("Username", edt_username.getText().toString());
         hashMap.put("Password", edt_password.getText().toString());
+        hashMap.put("Present","0");
+        hashMap.put("Absent","0");
         new WebService(this, this, hashMap, "editStudent").execute(AppConstants.BASE_URL + AppConstants.EDIT_STUDENT);
     }
 
