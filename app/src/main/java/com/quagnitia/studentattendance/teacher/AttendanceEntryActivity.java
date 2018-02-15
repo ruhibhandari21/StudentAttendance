@@ -107,6 +107,15 @@ public class AttendanceEntryActivity extends AppCompatActivity implements View.O
     }
 
 
+    public void callGetAllAttendanceEntry() {
+        Date c = Calendar.getInstance().getTime();
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+        String formattedDate = df.format(c);
+        new WebService(this, this, null, "getAllAttendanceEntry").execute
+                (AppConstants.BASE_URL + AppConstants.GET_ALL_ATTENDANCE_ENTRY+"?CurrentDate="+formattedDate+"&Classname="+sp_class.getSelectedItem().toString());
+    }
+
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -187,6 +196,37 @@ public class AttendanceEntryActivity extends AppCompatActivity implements View.O
                     finish();
                     break;
 
+                case "getAllAttendanceEntry":
+                    try {
+                        JSONArray jsonArray=new JSONArray(jsonObject.optString("students"));
+                        if(jsonArray.length()!=0)
+                        {
+
+                            for(int i=0;i<jsonArray.length();i++)
+                            {
+                                JSONObject jsonObject1=jsonArray.optJSONObject(i);
+                                for(int j=0;j<studentList.size();j++)
+                                {
+                                    if(jsonObject1.optString("UserId").equals(studentList.get(j).getUserid()))
+                                    {
+                                        studentList.get(j).setPresent(jsonObject1.optString("Present"));
+                                        studentList.get(j).setAbsent(jsonObject1.optString("Absent"));
+                                    }
+                                }
+
+                            }
+                            viewAllStudentByClassNameAdapter.notifyDataSetChanged();
+
+                        }
+
+                    }
+                    catch (Exception e)
+                    {
+                        e.printStackTrace();
+                    }
+
+                    break;
+
                 case "getAllStudentByClassname":
                     try
                     {
@@ -234,16 +274,34 @@ public class AttendanceEntryActivity extends AppCompatActivity implements View.O
                     {
                         e.printStackTrace();
                     }
-
+                    callGetAllAttendanceEntry();
 
                     break;
 
 
             }
         } else {
-            tv_no_records.setVisibility(View.VISIBLE);
-            recycler_view.setVisibility(View.GONE);
-            Toast.makeText(mContext, jsonObject.optString("message"), Toast.LENGTH_SHORT).show();
+            if(TAG.equals("getAllAttendanceEntry"))
+            {
+                if(studentList.size()!=0)
+                {
+                    tv_no_records.setVisibility(View.GONE);
+                    recycler_view.setVisibility(View.VISIBLE);
+                }
+                else
+                {
+                    tv_no_records.setVisibility(View.VISIBLE);
+                    recycler_view.setVisibility(View.GONE);
+                    Toast.makeText(mContext, jsonObject.optString("message"), Toast.LENGTH_SHORT).show();
+                }
+            }
+            else
+            {
+                tv_no_records.setVisibility(View.VISIBLE);
+                recycler_view.setVisibility(View.GONE);
+                Toast.makeText(mContext, jsonObject.optString("message"), Toast.LENGTH_SHORT).show();
+            }
+
         }
 
     }

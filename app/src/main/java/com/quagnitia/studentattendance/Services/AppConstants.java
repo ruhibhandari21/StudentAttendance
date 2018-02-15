@@ -31,6 +31,8 @@ public class AppConstants {
 
     public static String GET_ALL_STUDENT_BY_CLASSNAME="getAllStudentsByClassname";
     public static String UPDATE_STUDENT_BY_CLASSNAME="updateStudentsByClassname";
+    public static String GET_ALL_ATTENDANCE_ENTRY="getAllAttendanceEntry";
+
 
 
 

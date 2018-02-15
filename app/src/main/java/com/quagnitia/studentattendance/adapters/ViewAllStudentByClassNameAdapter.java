@@ -105,7 +105,7 @@ public class ViewAllStudentByClassNameAdapter extends RecyclerView.Adapter<ViewA
                     studentsList.get(position).setPresent("1");
                 }
                 ((AttendanceEntryActivity)mContext).updateAttendanceStudentList(studentsList);
-                notifyDataSetChanged();
+//                notifyDataSetChanged();
             }
         });
 
@@ -128,7 +128,7 @@ public class ViewAllStudentByClassNameAdapter extends RecyclerView.Adapter<ViewA
                     studentsList.get(position).setAbsent("1");
                 }
                 ((AttendanceEntryActivity)mContext).updateAttendanceStudentList(studentsList);
-                notifyDataSetChanged();
+              //  notifyDataSetChanged();
             }
         });
 
