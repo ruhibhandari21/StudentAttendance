@@ -85,8 +85,8 @@ public class TeacherHomeFragment extends Fragment implements View.OnClickListene
         switch(view.getId())
         {
             case R.id.rel_attendance_report:
-//                intent=new Intent(getActivity(),AddStudentActivity.class);
-//                getActivity().startActivity(intent);
+                intent=new Intent(mContext,AttendanceReportActivity.class);
+                mContext.startActivity(intent);
                 break;
             case R.id.rel_attendance_entry:
                 intent=new Intent(mContext,AttendanceEntryActivity.class);

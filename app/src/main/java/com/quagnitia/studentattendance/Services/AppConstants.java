@@ -33,7 +33,7 @@ public class AppConstants {
     public static String UPDATE_STUDENT_BY_CLASSNAME="updateStudentsByClassname";
     public static String GET_ALL_ATTENDANCE_ENTRY="getAllAttendanceEntry";
 
-
+    public static String GET_ALL_ATTENDANCE_ENTRY_PERMONTH="getAllAttendanceEntryOfMonth";
 
 
 
