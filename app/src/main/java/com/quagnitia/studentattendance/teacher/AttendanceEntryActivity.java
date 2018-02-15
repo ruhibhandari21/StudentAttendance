@@ -45,6 +45,7 @@ public class AttendanceEntryActivity extends AppCompatActivity implements View.O
     private List<GetAllStudentByClassName> studentList=new ArrayList<>();
     private Spinner sp_class;
     private ViewAllStudentByClassNameAdapter viewAllStudentByClassNameAdapter;
+    private String selectedStudentList="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,10 +86,25 @@ public class AttendanceEntryActivity extends AppCompatActivity implements View.O
         new WebService(this, this, hashMap, "getAllStudentByClassname").execute(AppConstants.BASE_URL + AppConstants.GET_ALL_STUDENT_BY_CLASSNAME);
     }
 
+    public void callUpdateAllStudentWS() {
+        HashMap hashMap=new HashMap();
+        hashMap.put("Classname",sp_class.getSelectedItem().toString());
+        hashMap.put("StudentList",selectedStudentList);
+        new WebService(this, this, hashMap, "updateStudentByClassname").execute(AppConstants.BASE_URL + AppConstants.UPDATE_STUDENT_BY_CLASSNAME);
+    }
+
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_save:
+                String s="";
+                for(int i=0;i<studentList.size();i++)
+                {
+                    s=s+studentList.get(i).getUserid()+",";
+                }
+                selectedStudentList=s;
+                callUpdateAllStudentWS();
                 break;
             case R.id.btn_cancel:
                 finish();
@@ -131,6 +147,10 @@ public class AttendanceEntryActivity extends AppCompatActivity implements View.O
 
                     break;
 
+                case "updateStudentByClassname":
+                    selectedStudentList="";
+                    break;
+
                 case "getAllStudentByClassname":
                     try
                     {
@@ -163,6 +183,7 @@ public class AttendanceEntryActivity extends AppCompatActivity implements View.O
                             recycler_view.setVisibility(View.VISIBLE);
                             viewAllStudentByClassNameAdapter=new ViewAllStudentByClassNameAdapter(mContext,studentList);
                             recycler_view.setAdapter(viewAllStudentByClassNameAdapter);
+
                         }
                         else
                         {
@@ -201,4 +222,15 @@ public class AttendanceEntryActivity extends AppCompatActivity implements View.O
         // TODO Auto-generated method stub
 
     }
+
+    public void updateAttendanceStudentList(List<GetAllStudentByClassName> studentList)
+    {
+        this.studentList=studentList;
+    }
+
+
+
+
+
+
 }

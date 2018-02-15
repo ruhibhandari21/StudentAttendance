@@ -24,6 +24,7 @@ import com.quagnitia.studentattendance.admin.ViewAllClassesActivity;
 import com.quagnitia.studentattendance.admin.ViewAllStudentActivity;
 import com.quagnitia.studentattendance.models.GetAllStudentByClassName;
 import com.quagnitia.studentattendance.models.GetAllStudents;
+import com.quagnitia.studentattendance.teacher.AttendanceEntryActivity;
 
 import java.util.List;
 
@@ -98,6 +99,7 @@ public class ViewAllStudentByClassNameAdapter extends RecyclerView.Adapter<ViewA
                     holder.chk_present.setChecked(true);
                     studentsList.get(position).setPresent("1");
                 }
+                ((AttendanceEntryActivity)mContext).updateAttendanceStudentList(studentsList);
                 notifyDataSetChanged();
             }
         });
@@ -115,6 +117,7 @@ public class ViewAllStudentByClassNameAdapter extends RecyclerView.Adapter<ViewA
                     holder.chk_absent.setChecked(true);
                     studentsList.get(position).setAbsent("1");
                 }
+                ((AttendanceEntryActivity)mContext).updateAttendanceStudentList(studentsList);
                 notifyDataSetChanged();
             }
         });
