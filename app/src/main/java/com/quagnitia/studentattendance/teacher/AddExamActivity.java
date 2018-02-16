@@ -69,7 +69,7 @@ public class AddExamActivity extends AppCompatActivity implements OnTaskComplete
         btn_register = (Button) findViewById(R.id.btn_register);
         img_back = (ImageView) findViewById(R.id.img_back);
         edt_marks=(EditText)findViewById(R.id.edt_marks);
-        edt_min_marks=(EditText)findViewById(R.id.edt_marks);
+        edt_min_marks=(EditText)findViewById(R.id.edt_min_marks);
         tv_view_all = (TextView) findViewById(R.id.tv_view_all);
         sp_class = (Spinner) findViewById(R.id.sp_class);
         sp_exam_type = (Spinner) findViewById(R.id.sp_exam_type);
