@@ -53,46 +53,7 @@
 
     </ScrollView>
 
-    <LinearLayout
-        android:id="@+id/ll_bottom"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/colorWhite"
-        android:orientation="horizontal"
-        android:padding="10dp"
-        android:weightSum="2">
 
-        <Button
-            android:id="@+id/btn_cancel"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/btn_border"
-            android:fontFamily="sans-serif-smallcaps"
-            android:gravity="center"
-            android:text="Cancel"
-            android:textColor="@color/colorWhite"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/btn_register"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/btn_border"
-            android:fontFamily="sans-serif-smallcaps"
-            android:gravity="center"
-            android:text="Add"
-            android:textColor="@color/colorWhite"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-    </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/header"
