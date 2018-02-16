@@ -61,9 +61,9 @@ public class ViewAllHomeWorkAdapter extends RecyclerView.Adapter<ViewAllHomeWork
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         final GetAllHomework getAllClass = classList.get(position);
-        holder.tv_classname.setText(getAllClass.getClassname());
+        holder.tv_classname.setText(getAllClass.getDescription());
         holder.tv_subject_name.setText(getAllClass.getSubect());
-        holder.tv_examtype.setText(getAllClass.getDescription());
+        holder.tv_examtype.setText(getAllClass.getClassname());
         holder.tv_exam_date.setVisibility(View.GONE);
         holder.tv_max_marks.setVisibility(View.GONE);
         holder.tv_enter.setVisibility(View.GONE);

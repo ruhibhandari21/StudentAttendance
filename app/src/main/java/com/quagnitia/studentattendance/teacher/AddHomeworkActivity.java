@@ -59,6 +59,10 @@ public class AddHomeworkActivity extends AppCompatActivity implements View.OnCli
         sp_class = (Spinner) findViewById(R.id.sp_class);
         sp_subject = (Spinner) findViewById(R.id.sp_subject);
         edt_description = (EditText) findViewById(R.id.edt_description);
+        btn_cancel = (Button) findViewById(R.id.btn_cancel);
+        btn_register = (Button) findViewById(R.id.btn_register);
+        img_back = (ImageView) findViewById(R.id.img_back);
+        tv_view_all = (TextView) findViewById(R.id.tv_view_all);
     }
 
 
