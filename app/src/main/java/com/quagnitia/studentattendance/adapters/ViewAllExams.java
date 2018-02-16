@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.quagnitia.studentattendance.R;
 import com.quagnitia.studentattendance.models.GetAllExams;
+import com.quagnitia.studentattendance.teacher.ViewAllExamsActivity;
 
 import java.util.List;
 
@@ -69,7 +70,7 @@ public class ViewAllExams extends RecyclerView.Adapter<ViewAllExams.MyViewHolder
         holder.img_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // ((ViewAllClassesActivity) mContext).callDeleteClassWS(position);
+                 ((ViewAllExamsActivity) mContext).callDeleteClassWS(position);
             }
         });
     }

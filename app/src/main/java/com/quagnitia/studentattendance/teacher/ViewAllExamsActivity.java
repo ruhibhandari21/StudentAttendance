@@ -146,7 +146,6 @@ public class ViewAllExamsActivity extends AppCompatActivity implements View.OnCl
                     Intent in=getIntent();
                     startActivity(in);
                     finish();
-
                     break;
 
 
