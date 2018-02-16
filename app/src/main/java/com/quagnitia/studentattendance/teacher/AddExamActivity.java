@@ -134,7 +134,7 @@ public class AddExamActivity extends AppCompatActivity implements OnTaskComplete
         else
         {
             HashMap<String,String> hashMap=new HashMap<>();
-            hashMap.put("Class",sp_class.getSelectedItem().toString());
+            hashMap.put("Classname",sp_class.getSelectedItem().toString());
             hashMap.put("Subject",sp_subject.getSelectedItem().toString());
             hashMap.put("ExamType",sp_exam_type.getSelectedItem().toString());
             hashMap.put("ExamDate",tv_exam_date.getText().toString());

@@ -4,7 +4,7 @@ package com.quagnitia.studentattendance.Services;
 public class AppConstants {
 
 
-    public static String BASE_URL = "http://192.168.1.8:80/studentattendance/index.php/api/";
+    public static String BASE_URL = "http://192.168.1.17:80/studentattendance/index.php/api/";
 
     public static String LOGIN="login";
     public static String ADD_CLASS="addClass";
@@ -36,6 +36,8 @@ public class AppConstants {
     public static String GET_ALL_ATTENDANCE_ENTRY_PERMONTH="getAllAttendanceEntryOfMonth";
 
     public static String ADD_EXAM="addExam";
+    public static String GET_EXAM="getExam";
+    public static String DELETE_EXAM="deleteExam";
 
 
 }
