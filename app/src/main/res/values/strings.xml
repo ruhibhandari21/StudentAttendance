@@ -7,7 +7,10 @@
     <string name="classstr">Class <font color='#FF0000'>*</font></string>
     <string name="Student">Student <font color='#FF0000'>*</font></string>
     <string name="gender">Gender <font color='#FF0000'>*</font></string>
+    <string name="test_type">Exam Type <font color='#FF0000'>*</font></string>
+    <string name="subject">Subject <font color='#FF0000'>*</font></string>
     <string name="dofReg">Date Of Registration <font color='#FF0000'>*</font></string>
+    <string name="exam_date">Exam Date <font color='#FF0000'>*</font></string>
     <string name="feeeffect">Fee Effective From </string>
     <string name="studfullname">Students Full Name <font color='#FF0000'>*</font></string>
     <string name="emailid">EmailID <font color='#FF0000'>*</font></string>
@@ -27,5 +30,6 @@
     <string name="user_type">User Type <font color='#FF0000'>*</font></string>
     <string name="teacher_username">Username <font color='#FF0000'>*</font></string>
     <string name="teacher_password">Password <font color='#FF0000'>*</font></string>
+    <string name="max_marks">Max marks <font color='#FF0000'>*</font></string>
 
 </resources>

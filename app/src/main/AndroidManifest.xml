@@ -60,7 +60,8 @@
             android:screenOrientation="portrait" />
         <activity android:name=".admin.ViewAllStudentActivity" />
         <activity android:name=".teacher.AttendanceEntryActivity" />
-        <activity android:name=".teacher.AttendanceReportActivity"></activity>
+        <activity android:name=".teacher.AttendanceReportActivity" />
+        <activity android:name=".teacher.AddExamActivity"></activity>
     </application>
 
 </manifest>

@@ -35,6 +35,7 @@ public class AppConstants {
 
     public static String GET_ALL_ATTENDANCE_ENTRY_PERMONTH="getAllAttendanceEntryOfMonth";
 
+    public static String ADD_EXAM="addExam";
 
 
 }
