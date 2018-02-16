@@ -5,6 +5,7 @@ package com.quagnitia.studentattendance.adapters;
  */
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 
 import com.quagnitia.studentattendance.R;
 import com.quagnitia.studentattendance.models.GetAllExams;
+import com.quagnitia.studentattendance.teacher.ExamMarksEntry;
 import com.quagnitia.studentattendance.teacher.ViewAllExamsActivity;
 
 import java.util.List;
@@ -29,7 +31,7 @@ public class ViewAllExams extends RecyclerView.Adapter<ViewAllExams.MyViewHolder
     private Context mContext;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView tv_classname, tv_subject_name, tv_examtype, tv_max_marks, tv_exam_date;
+        public TextView tv_classname,tv_enter, tv_subject_name, tv_examtype, tv_max_marks, tv_exam_date;
         private ImageView img_edit, img_delete;
 
         public MyViewHolder(View view) {
@@ -39,6 +41,7 @@ public class ViewAllExams extends RecyclerView.Adapter<ViewAllExams.MyViewHolder
             tv_examtype = (TextView) view.findViewById(R.id.tv_exam_type);
             tv_max_marks = (TextView) view.findViewById(R.id.tv_max_marks);
             tv_exam_date = (TextView) view.findViewById(R.id.tv_exam_date);
+            tv_enter = (TextView) view.findViewById(R.id.tv_enter);
             img_edit = (ImageView) view.findViewById(R.id.img_edit);
             img_delete = (ImageView) view.findViewById(R.id.img_delete);
         }
@@ -59,7 +62,7 @@ public class ViewAllExams extends RecyclerView.Adapter<ViewAllExams.MyViewHolder
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        GetAllExams getAllClass = classList.get(position);
+        final GetAllExams getAllClass = classList.get(position);
         holder.tv_classname.setText(getAllClass.getClassname());
         holder.tv_subject_name.setText(getAllClass.getSubject());
         holder.tv_examtype.setText(getAllClass.getExamtype());
@@ -73,6 +76,22 @@ public class ViewAllExams extends RecyclerView.Adapter<ViewAllExams.MyViewHolder
                  ((ViewAllExamsActivity) mContext).callDeleteClassWS(position);
             }
         });
+
+        holder.tv_enter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i=new Intent(mContext, ExamMarksEntry.class);
+                i.putExtra("Classname",getAllClass.getClassname());
+                i.putExtra("Subject",getAllClass.getSubject());
+                i.putExtra("ExamType",getAllClass.getExamtype());
+                i.putExtra("ExamDate",getAllClass.getExamdate());
+                i.putExtra("MaxMarks",getAllClass.getMaxmarks());
+                mContext.startActivity(i);
+
+            }
+        });
+
     }
 
 

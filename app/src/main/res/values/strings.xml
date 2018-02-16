@@ -31,5 +31,6 @@
     <string name="teacher_username">Username <font color='#FF0000'>*</font></string>
     <string name="teacher_password">Password <font color='#FF0000'>*</font></string>
     <string name="max_marks">Max marks <font color='#FF0000'>*</font></string>
+    <string name="marks_obtained">Marks Obtained <font color='#FF0000'>*</font></string>
 
 </resources>

@@ -155,7 +155,7 @@
                 android:fontFamily="sans-serif"
                 android:textSize="16sp"
                 android:textColor="@color/colorLightBlack"
-                android:text="Exam Results"
+                android:text="Exam Marks Entry"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 

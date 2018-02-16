@@ -39,5 +39,7 @@ public class AppConstants {
     public static String GET_EXAM="getExam";
     public static String DELETE_EXAM="deleteExam";
 
+    public static String ADD_STUDENTS_MARKS="addStudentsMarks";
+
 
 }

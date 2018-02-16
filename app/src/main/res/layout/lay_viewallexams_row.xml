@@ -4,7 +4,6 @@
     android:layout_height="wrap_content"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
-    android:paddingTop="10dp"
     >
 
     <LinearLayout
@@ -81,9 +80,21 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
-    <View
-        android:layout_below="@+id/ll"
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
         android:layout_marginTop="10dp"
+        android:layout_below="@+id/ll"
+        android:id="@+id/tv_enter"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:text="Click Here To Enter Marks Of Students"
+        />
+
+    <View
+        android:layout_below="@+id/tv_enter"
         android:background="@color/colorLightGrayBg"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"></View>
