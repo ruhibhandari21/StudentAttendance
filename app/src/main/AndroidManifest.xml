@@ -63,7 +63,8 @@
         <activity android:name=".teacher.AttendanceReportActivity" />
         <activity android:name=".teacher.AddExamActivity" />
         <activity android:name=".teacher.ViewAllExamsActivity" />
-        <activity android:name=".teacher.ExamMarksEntry"></activity>
+        <activity android:name=".teacher.ExamMarksEntry" />
+        <activity android:name=".teacher.ExamResults"></activity>
     </application>
 
 </manifest>
