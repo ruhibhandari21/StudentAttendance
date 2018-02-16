@@ -2,6 +2,7 @@ package com.quagnitia.studentattendance.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,6 +60,15 @@ public class ExamResultAdapter extends RecyclerView.Adapter<ExamResultAdapter.My
         holder.tv_min_marks.setText(getAllClass.getMinMarks());
         holder.tv_marks_obtained.setText(getAllClass.getMarksObtained());
         holder.tv_remark.setText(getAllClass.getRemark());
+        if(getAllClass.getRemark().equals("Pass"))
+        {
+            holder.tv_remark.setTextColor(mContext.getResources().getColor(android.R.color.holo_green_dark));
+        }
+        else
+        {
+            holder.tv_remark.setTextColor(mContext.getResources().getColor(android.R.color.holo_red_dark));
+        }
+
     }
 
 

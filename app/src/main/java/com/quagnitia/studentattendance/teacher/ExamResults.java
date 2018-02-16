@@ -80,6 +80,7 @@ public class ExamResults extends AppCompatActivity implements OnTaskCompleted, V
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         studentUserId = studentList.get(position).getUserid();
+        listgetAllResult.clear();
         callGetAllStudentMarksWS(position);
     }
 
@@ -191,6 +192,8 @@ public class ExamResults extends AppCompatActivity implements OnTaskCompleted, V
 
 
                         } else {
+                            examResultAdapter=new ExamResultAdapter(mContext,listgetAllResult);
+                            recycler_view.setAdapter(examResultAdapter);
                             Toast.makeText(mContext, "No Records Found", Toast.LENGTH_SHORT).show();
                             finish();
                         }
@@ -206,6 +209,11 @@ public class ExamResults extends AppCompatActivity implements OnTaskCompleted, V
 
             }
         } else {
+            if(TAG.equals("getAllStudentMarks"))
+            {
+                examResultAdapter=new ExamResultAdapter(mContext,listgetAllResult);
+                recycler_view.setAdapter(examResultAdapter);
+            }
             Toast.makeText(mContext, jsonObject.optString("message"), Toast.LENGTH_SHORT).show();
         }
 
