@@ -2,9 +2,7 @@ package com.quagnitia.studentattendance.teacher;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,33 +19,22 @@ import com.quagnitia.studentattendance.Services.AppConstants;
 import com.quagnitia.studentattendance.Services.OnTaskCompleted;
 import com.quagnitia.studentattendance.Services.WebService;
 import com.quagnitia.studentattendance.models.GetAllStudentByClassName;
-import com.quagnitia.studentattendance.models.GetAllSubjects;
 import com.quagnitia.studentattendance.utils.PreferencesManager;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
-import java.util.prefs.Preferences;
 
 public class ExamMarksEntry extends AppCompatActivity implements OnTaskCompleted, View.OnClickListener, AdapterView.OnItemSelectedListener {
     private Button btn_cancel, btn_register;
     private TextView tv_view_all, tv_class, tv_subject, tv_examtype, tv_examdate, tv_max_marks;
     private ImageView img_back;
-    private Intent intent;
     private EditText edt_marks;
     private Context mContext;
     private Spinner sp_student;
-    private boolean isEdit = false;
-    private List<String> list = new ArrayList<>();
-    private List<String> listExamType = new ArrayList<>();
-    private List<GetAllSubjects> listAllSubjects = new ArrayList<>();
-    private List<String> listAllSubjects1 = new ArrayList<>();
-    private TextView tv_exam_date;
-    private Calendar myCalendar;
     private List<GetAllStudentByClassName> studentList = new ArrayList<>();
     private List<String> studentList1 = new ArrayList<>();
     private DatePickerDialog.OnDateSetListener date;
@@ -57,7 +44,7 @@ public class ExamMarksEntry extends AppCompatActivity implements OnTaskCompleted
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exam_marks_entry);
-        preferencesManager=PreferencesManager.getInstance(this);
+        preferencesManager = PreferencesManager.getInstance(this);
         mContext = ExamMarksEntry.this;
         initUI();
         initListener();
@@ -104,26 +91,21 @@ public class ExamMarksEntry extends AppCompatActivity implements OnTaskCompleted
     }
 
     public void callAddStudentMarksWS() {
-        if(edt_marks.getText().toString().equals(""))
-        {
+        if (edt_marks.getText().toString().equals("")) {
             Toast.makeText(mContext, "Please enter the marks", Toast.LENGTH_SHORT).show();
-        }
-        else if(Float.parseFloat(edt_marks.getText().toString())>Float.parseFloat(tv_max_marks.getText().toString()))
-        {
+        } else if (Float.parseFloat(edt_marks.getText().toString()) > Float.parseFloat(tv_max_marks.getText().toString())) {
             Toast.makeText(mContext, "Obtained marks cannot be greater than max marks", Toast.LENGTH_SHORT).show();
-        }
-        else
-        {
+        } else {
             HashMap hashMap = new HashMap();
-            hashMap.put("TeacherUserId",preferencesManager.getUserId());
-            hashMap.put("StudentUserId",studentUserId);
-            hashMap.put("StudentName",sp_student.getSelectedItem().toString());
+            hashMap.put("TeacherUserId", preferencesManager.getUserId());
+            hashMap.put("StudentUserId", studentUserId);
+            hashMap.put("StudentName", sp_student.getSelectedItem().toString());
             hashMap.put("Classname", tv_class.getText().toString());
             hashMap.put("SubjectName", tv_subject.getText().toString());
-            hashMap.put("ExamType",tv_examtype.getText().toString());
-            hashMap.put("ExamDate",tv_examdate.getText().toString());
-            hashMap.put("MaxMarks",tv_max_marks.getText().toString());
-            hashMap.put("MarksObtained",edt_marks.getText().toString());
+            hashMap.put("ExamType", tv_examtype.getText().toString());
+            hashMap.put("ExamDate", tv_examdate.getText().toString());
+            hashMap.put("MaxMarks", tv_max_marks.getText().toString());
+            hashMap.put("MarksObtained", edt_marks.getText().toString());
 
             new WebService(this, this, hashMap, "addStudentsMarks").execute(AppConstants.BASE_URL + AppConstants.ADD_STUDENTS_MARKS);
         }
@@ -142,10 +124,12 @@ public class ExamMarksEntry extends AppCompatActivity implements OnTaskCompleted
                 break;
         }
     }
-String studentUserId="";
+
+    String studentUserId = "";
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        studentUserId=studentList.get(position).getUserid();
+        studentUserId = studentList.get(position).getUserid();
     }
 
     @Override
@@ -203,7 +187,7 @@ String studentUserId="";
                     break;
 
                 case "addStudentsMarks":
-                   edt_marks.setText("");
+                    edt_marks.setText("");
                     Toast.makeText(mContext, jsonObject.optString("message"), Toast.LENGTH_SHORT).show();
                     break;
 
