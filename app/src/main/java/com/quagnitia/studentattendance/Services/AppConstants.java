@@ -42,5 +42,9 @@ public class AppConstants {
     public static String ADD_STUDENTS_MARKS="addStudentsMarks";
     public static String GET_STUDENTS_MARKS="getStudentsMarks";
 
+    public static String ADD_HOMEWORK="addHomework";
+    public static String GET_HOMEWORK="getHomework";
+    public static String DELETE_HOMEWORK="deleteHomework";
+
 
 }
