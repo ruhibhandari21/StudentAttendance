@@ -85,6 +85,7 @@ public class ViewAllExamsActivity extends AppCompatActivity implements View.OnCl
         hashMap.put("ExamDate",list.get(pos).getExamdate());
         hashMap.put("ExamType",list.get(pos).getExamtype());
         hashMap.put("MaxMarks",list.get(pos).getMaxmarks());
+        hashMap.put("MinMarks",list.get(pos).getMinmarks());
         new WebService(this,this,hashMap,"deleteExam").execute(AppConstants.BASE_URL+AppConstants.DELETE_EXAM);
     }
 
@@ -117,6 +118,7 @@ public class ViewAllExamsActivity extends AppCompatActivity implements View.OnCl
                                 getAllExams.setExamtype(jsonObject1.optString("ExamType"));
                                 getAllExams.setExamdate(jsonObject1.optString("ExamDate"));
                                 getAllExams.setMaxmarks(jsonObject1.optString("MaxMarks"));
+                                getAllExams.setMinmarks(jsonObject1.optString("MinMarks"));
                                 list.add(getAllExams);
                             }
                             tv_no_records.setVisibility(View.GONE);

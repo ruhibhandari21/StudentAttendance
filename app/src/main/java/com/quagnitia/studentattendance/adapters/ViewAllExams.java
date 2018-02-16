@@ -87,6 +87,7 @@ public class ViewAllExams extends RecyclerView.Adapter<ViewAllExams.MyViewHolder
                 i.putExtra("ExamType",getAllClass.getExamtype());
                 i.putExtra("ExamDate",getAllClass.getExamdate());
                 i.putExtra("MaxMarks",getAllClass.getMaxmarks());
+                i.putExtra("MinMarks",getAllClass.getMinmarks());
                 mContext.startActivity(i);
 
             }

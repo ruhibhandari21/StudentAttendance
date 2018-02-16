@@ -39,7 +39,7 @@ public class AddExamActivity extends AppCompatActivity implements OnTaskComplete
     private TextView tv_view_all;
     private ImageView img_back;
     private Intent intent;
-    private EditText edt_marks;
+    private EditText edt_marks,edt_min_marks;
     private Context mContext;
     private Spinner sp_class, sp_exam_type, sp_subject;
     private boolean isEdit = false;
@@ -69,6 +69,7 @@ public class AddExamActivity extends AppCompatActivity implements OnTaskComplete
         btn_register = (Button) findViewById(R.id.btn_register);
         img_back = (ImageView) findViewById(R.id.img_back);
         edt_marks=(EditText)findViewById(R.id.edt_marks);
+        edt_min_marks=(EditText)findViewById(R.id.edt_marks);
         tv_view_all = (TextView) findViewById(R.id.tv_view_all);
         sp_class = (Spinner) findViewById(R.id.sp_class);
         sp_exam_type = (Spinner) findViewById(R.id.sp_exam_type);
@@ -127,7 +128,8 @@ public class AddExamActivity extends AppCompatActivity implements OnTaskComplete
                 sp_class.getSelectedItem().toString().equals("")||
                 sp_subject.getSelectedItem().toString().equals("")||
                 sp_exam_type.getSelectedItem().toString().equals("")||
-                tv_exam_date.getText().equals(""))
+                tv_exam_date.getText().equals("")||
+                edt_min_marks.getText().equals(""))
         {
             Toast.makeText(mContext, "All fields are mandatory", Toast.LENGTH_SHORT).show();
         }
@@ -139,6 +141,7 @@ public class AddExamActivity extends AppCompatActivity implements OnTaskComplete
             hashMap.put("ExamType",sp_exam_type.getSelectedItem().toString());
             hashMap.put("ExamDate",tv_exam_date.getText().toString());
             hashMap.put("MaxMarks",edt_marks.getText().toString());
+            hashMap.put("MinMarks",edt_min_marks.getText().toString());
             new WebService(mContext, this, hashMap, "addExam").execute(AppConstants.BASE_URL + AppConstants.ADD_EXAM);
         }
 

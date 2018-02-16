@@ -3,6 +3,9 @@ package com.quagnitia.studentattendance.teacher;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,6 +17,8 @@ import com.quagnitia.studentattendance.R;
 import com.quagnitia.studentattendance.Services.AppConstants;
 import com.quagnitia.studentattendance.Services.OnTaskCompleted;
 import com.quagnitia.studentattendance.Services.WebService;
+import com.quagnitia.studentattendance.adapters.ExamResultAdapter;
+import com.quagnitia.studentattendance.models.GetAllResult;
 import com.quagnitia.studentattendance.models.GetAllStudentByClassName;
 import com.quagnitia.studentattendance.utils.PreferencesManager;
 
@@ -27,9 +32,12 @@ public class ExamResults extends AppCompatActivity implements OnTaskCompleted, V
     private ImageView img_back;
     private Context mContext;
     private Spinner sp_student;
+    private ExamResultAdapter examResultAdapter;
     private List<GetAllStudentByClassName> studentList = new ArrayList<>();
     private List<String> studentList1 = new ArrayList<>();
+    private List<GetAllResult> listgetAllResult=new ArrayList<>();
     private PreferencesManager preferencesManager;
+    private RecyclerView recycler_view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +53,10 @@ public class ExamResults extends AppCompatActivity implements OnTaskCompleted, V
     public void initUI() {
         img_back = (ImageView) findViewById(R.id.img_back);
         sp_student = (Spinner) findViewById(R.id.sp_student);
-
+        recycler_view=(RecyclerView)findViewById(R.id.recycler_view);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        recycler_view.setLayoutManager(mLayoutManager);
+        recycler_view.setItemAnimator(new DefaultItemAnimator());
 
     }
 
@@ -59,11 +70,17 @@ public class ExamResults extends AppCompatActivity implements OnTaskCompleted, V
         new WebService(this, this, null, "getAllStudentByClassname").execute(AppConstants.BASE_URL + AppConstants.GET_ALL_STUDENT);
     }
 
+    public void callGetAllStudentMarksWS(int pos) {
+        new WebService(this, this, null, "getAllStudentMarks").execute(AppConstants.BASE_URL + AppConstants.GET_STUDENTS_MARKS+"?Classname="+studentList.get(pos).getClassname()+"&StudentUserId="+studentList.get(pos).getUserid());
+    }
+
+
     String studentUserId = "";
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         studentUserId = studentList.get(position).getUserid();
+        callGetAllStudentMarksWS(position);
     }
 
     @Override
@@ -93,7 +110,9 @@ public class ExamResults extends AppCompatActivity implements OnTaskCompleted, V
                     try {
                         JSONArray jsonArray = new JSONArray(jsonObject.optString("students"));
                         if (jsonArray.length() != 0) {
-
+                                if(studentList!=null)
+                                    studentList.clear();
+                                    studentList1.clear();
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject jsonObject1 = jsonArray.optJSONObject(i);
                                 GetAllStudentByClassName getAllStudents = new GetAllStudentByClassName();
@@ -129,6 +148,60 @@ public class ExamResults extends AppCompatActivity implements OnTaskCompleted, V
                     }
 
                     break;
+
+                case "getAllStudentMarks":
+                    try {
+                        JSONArray jsonArray = new JSONArray(jsonObject.optString("result"));
+                        if (jsonArray.length() != 0) {
+                            if(listgetAllResult!=null)
+                                listgetAllResult.clear();
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject jsonObject1 = jsonArray.optJSONObject(i);
+                                GetAllResult getAllResult = new GetAllResult();
+                                getAllResult.setTeacherUserId(jsonObject1.optString("TeacherUserId"));
+                                getAllResult.setStudentUserId(jsonObject1.optString("StudentUserId"));
+                                getAllResult.setStudentName(jsonObject1.optString("StudentName"));
+                                getAllResult.setClassname(jsonObject1.optString("Classname"));
+                                getAllResult.setSubjectName(jsonObject1.optString("SubjectName"));
+                                getAllResult.setExamDate(jsonObject1.optString("ExamDate"));
+                                getAllResult.setExamType(jsonObject1.optString("ExamType"));
+                                getAllResult.setMaxMarks(jsonObject1.optString("MaxMarks"));
+                                getAllResult.setMarksObtained(jsonObject1.optString("MarksObtained"));
+                                getAllResult.setMinMarks(jsonObject1.optString("MinMarks"));
+
+                                float marksObtained=Float.parseFloat(getAllResult.getMarksObtained());
+                                float totalmarks=Float.parseFloat(getAllResult.getMaxMarks());
+                                float minmarks=Float.parseFloat(getAllResult.getMinMarks());
+
+                                if(marksObtained<minmarks)
+                                {
+                                    getAllResult.setRemark("Fail");
+                                }
+                                else
+                                {
+                                    getAllResult.setRemark("Pass");
+                                }
+
+
+                                listgetAllResult.add(getAllResult);
+                            }
+
+                            examResultAdapter=new ExamResultAdapter(mContext,listgetAllResult);
+                            recycler_view.setAdapter(examResultAdapter);
+
+
+                        } else {
+                            Toast.makeText(mContext, "No Records Found", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+
+                    break;
+
 
 
             }

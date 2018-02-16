@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@color/colorLightBlack"
+    android:weightSum="5"
+    android:orientation="horizontal">
+
+
+    <TextView
+        android:id="@+id/tv_subject_name"
+        android:background="@color/colorWhite"
+        android:layout_margin="0.25dp"
+        android:textColor="@color/colorLightBlack"
+        android:layout_weight="1"
+        android:text="Subject"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+    <TextView
+        android:id="@+id/tv_max_marks"
+        android:background="@color/colorWhite"
+        android:layout_margin="0.25dp"
+        android:textColor="@color/colorLightBlack"
+        android:layout_weight="1"
+        android:text="Max Marks"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+    <TextView
+        android:id="@+id/tv_min_marks"
+        android:background="@color/colorWhite"
+        android:layout_margin="0.25dp"
+        android:textColor="@color/colorLightBlack"
+        android:layout_weight="1"
+        android:text="Min Marks"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+    <TextView
+        android:id="@+id/tv_marks_obtained"
+        android:background="@color/colorWhite"
+        android:layout_margin="0.25dp"
+        android:textColor="@color/colorLightBlack"
+        android:layout_weight="1"
+        android:text="Marks Obtained"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+    <TextView
+        android:id="@+id/tv_remark"
+        android:background="@color/colorWhite"
+        android:layout_margin="0.25dp"
+        android:textColor="@color/colorLightBlack"
+        android:layout_weight="1"
+        android:text="Remark"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+</LinearLayout>

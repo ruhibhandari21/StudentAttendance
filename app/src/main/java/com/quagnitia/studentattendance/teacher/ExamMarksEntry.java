@@ -32,7 +32,7 @@ public class ExamMarksEntry extends AppCompatActivity implements OnTaskCompleted
     private Button btn_cancel, btn_register;
     private TextView tv_view_all, tv_class, tv_subject, tv_examtype, tv_examdate, tv_max_marks;
     private ImageView img_back;
-    private EditText edt_marks;
+    private EditText edt_marks,tv_min_marks;
     private Context mContext;
     private Spinner sp_student;
     private List<GetAllStudentByClassName> studentList = new ArrayList<>();
@@ -105,6 +105,7 @@ public class ExamMarksEntry extends AppCompatActivity implements OnTaskCompleted
             hashMap.put("ExamType", tv_examtype.getText().toString());
             hashMap.put("ExamDate", tv_examdate.getText().toString());
             hashMap.put("MaxMarks", tv_max_marks.getText().toString());
+            hashMap.put("MinMarks", getIntent().getStringExtra("MinMarks"));
             hashMap.put("MarksObtained", edt_marks.getText().toString());
 
             new WebService(this, this, hashMap, "addStudentsMarks").execute(AppConstants.BASE_URL + AppConstants.ADD_STUDENTS_MARKS);

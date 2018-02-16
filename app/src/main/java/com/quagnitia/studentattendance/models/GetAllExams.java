@@ -6,7 +6,21 @@ package com.quagnitia.studentattendance.models;
 
 public class GetAllExams {
 
-    String classname="",subject="",examtype="",examdate="",maxmarks="";
+    String classname="";
+    String subject="";
+    String examtype="";
+    String examdate="";
+    String maxmarks="";
+
+    public String getMinmarks() {
+        return minmarks;
+    }
+
+    public void setMinmarks(String minmarks) {
+        this.minmarks = minmarks;
+    }
+
+    String minmarks="";
 
     public String getClassname() {
         return classname;
