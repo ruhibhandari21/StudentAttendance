@@ -160,7 +160,7 @@ public class AddExamActivity extends AppCompatActivity implements OnTaskComplete
                 callAddExamWS();
                 break;
             case R.id.tv_view_all:
-                intent = new Intent(mContext, ViewAllStudentActivity.class);
+                intent = new Intent(mContext, ViewAllExamsActivity.class);
                 startActivity(intent);
                 finish();
                 break;

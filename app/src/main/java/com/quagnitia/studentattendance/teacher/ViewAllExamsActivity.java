@@ -83,7 +83,7 @@ public class ViewAllExamsActivity extends AppCompatActivity implements View.OnCl
         hashMap.put("Classname",list.get(pos).getClassname());
         hashMap.put("Subject",list.get(pos).getSubject());
         hashMap.put("ExamDate",list.get(pos).getExamdate());
-        hashMap.put("ExamTYpe",list.get(pos).getExamtype());
+        hashMap.put("ExamType",list.get(pos).getExamtype());
         hashMap.put("MaxMarks",list.get(pos).getMaxmarks());
         new WebService(this,this,hashMap,"deleteExam").execute(AppConstants.BASE_URL+AppConstants.DELETE_EXAM);
     }
