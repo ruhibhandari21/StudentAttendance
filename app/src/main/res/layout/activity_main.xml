@@ -6,13 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v4.widget.DrawerLayout
+  <!--  <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true">-->
 
         <RelativeLayout
             android:id="@+id/container"
@@ -52,7 +52,7 @@
                 android:textStyle="bold" />
         </RelativeLayout>
 
-        <RelativeLayout
+      <!--  <RelativeLayout
             android:id="@+id/whatYouWantInLeftDrawer"
             android:layout_width="270dp"
             android:layout_height="match_parent"
@@ -60,10 +60,10 @@
             android:background="@color/colorWhite">
             <include layout="@layout/drawer_side_layout" />
 
-        </RelativeLayout>
+        </RelativeLayout>-->
 
 
-    </android.support.v4.widget.DrawerLayout>
+<!--    </android.support.v4.widget.DrawerLayout>-->
 </RelativeLayout>
 
 

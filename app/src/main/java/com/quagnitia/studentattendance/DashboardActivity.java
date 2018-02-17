@@ -1,6 +1,7 @@
 package com.quagnitia.studentattendance;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,13 +9,21 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.quagnitia.studentattendance.Services.AppConstants;
+import com.quagnitia.studentattendance.Services.OnTaskCompleted;
+import com.quagnitia.studentattendance.Services.WebService;
 import com.quagnitia.studentattendance.admin.AdminHomeFragment;
+import com.quagnitia.studentattendance.initials.RoleSelectionActivity;
 import com.quagnitia.studentattendance.student.StudentHomeFragment;
 import com.quagnitia.studentattendance.teacher.TeacherHomeFragment;
 import com.quagnitia.studentattendance.utils.PreferencesManager;
 
-public class DashboardActivity extends AppCompatActivity implements View.OnClickListener {
+import org.json.JSONObject;
+
+public class DashboardActivity extends AppCompatActivity implements View.OnClickListener,OnTaskCompleted {
 
     private ImageView img_menu;
     private Context mContext;
@@ -23,6 +32,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     private String CURRENTFRAGMENT = "";
     private Fragment fragment;
     private PreferencesManager preferencesManager;
+    private TextView tv_logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +59,60 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     }
 
     public void initUI() {
-        img_menu = (ImageView) findViewById(R.id.img_menu);
+//        img_menu = (ImageView) findViewById(R.id.img_menu);
+        tv_logout=(TextView)findViewById(R.id.tv_logout);
     }
 
     public void initListener() {
-        img_menu.setOnClickListener(this);
+//        img_menu.setOnClickListener(this);
+        tv_logout.setOnClickListener(this);
+    }
+
+    public void callLogoutWS()
+    {
+        String role="";
+        if(preferencesManager.getRole().equals("1"))
+        {
+            role="admin";
+        }
+        else if(preferencesManager.getRole().equals("2"))
+        {
+            role="teacher";
+        }
+        else if(preferencesManager.getRole().equals("3"))
+        {
+            role="student";
+        }
+        new WebService(this,this,null,"logout").execute(AppConstants.BASE_URL+AppConstants.LOGOUT+"?UserId="+preferencesManager.getUserId()+"&Role="+role);
+    }
+
+
+    @Override
+    public void onTaskCompleted(JSONObject jsonObject, String result, String TAG) throws Exception {
+
+        if(result.equals(""))
+        {
+            Toast.makeText(mContext, "Something went worng.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(jsonObject.optBoolean("success"))
+        {
+            switch (TAG)
+            {
+                case "logout":
+                    preferencesManager.clearPrefrences();
+                    Intent i=new Intent(mContext, RoleSelectionActivity.class);
+                    startActivity(i);
+                    finish();
+                    break;
+            }
+        }
+        else
+        {
+            Toast.makeText(mContext, jsonObject.optString("message"), Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public enum SCREENS {
@@ -86,7 +145,10 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.img_menu:
+//            case R.id.img_menu:
+//                break;
+            case R.id.tv_logout:
+                callLogoutWS();
                 break;
         }
 
