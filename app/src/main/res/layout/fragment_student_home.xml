@@ -1,0 +1,168 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="2"
+    android:background="@color/colorLightGrayBg"
+    android:padding="10dp"
+    >
+
+    <LinearLayout
+        android:weightSum="2"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/rel_attendance_report"
+            android:background="@drawable/tiles_bg"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+            <ImageView
+                android:src="@drawable/ic_attendance_report"
+                android:id="@+id/img1"
+                android:layout_alignParentTop="true"
+                android:layout_margin="10dp"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                />
+            <TextView
+                android:layout_below="@+id/img1"
+                android:src="@drawable/ic_stud"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:fontFamily="sans-serif"
+                android:textSize="16sp"
+                android:textColor="@color/colorLightBlack"
+                android:text="Attendance Report"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                />
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:id="@+id/rel_exam_results"
+            android:background="@drawable/tiles_bg"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+            <ImageView
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_exam_results"
+                android:id="@+id/img4"
+                android:layout_alignParentTop="true"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                />
+            <TextView
+                android:layout_below="@+id/img4"
+                android:src="@drawable/ic_stud"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:fontFamily="sans-serif"
+                android:textSize="16sp"
+                android:textColor="@color/colorLightBlack"
+                android:text="Exam Results"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:weightSum="2"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/rel_view_timetable"
+            android:background="@drawable/tiles_bg"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+            <ImageView
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_view_timetable"
+                android:id="@+id/img5"
+                android:layout_alignParentTop="true"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                />
+            <TextView
+                android:layout_below="@+id/img5"
+                android:src="@drawable/ic_stud"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:fontFamily="sans-serif"
+                android:textSize="16sp"
+                android:textColor="@color/colorLightBlack"
+                android:text="View TimeTable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rel_add_homework"
+            android:background="@drawable/tiles_bg"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+            <ImageView
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_add_homework"
+                android:id="@+id/img6"
+                android:layout_alignParentTop="true"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                />
+            <TextView
+                android:layout_below="@+id/img6"
+                android:src="@drawable/ic_stud"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:fontFamily="sans-serif"
+                android:textSize="16sp"
+                android:textColor="@color/colorLightBlack"
+                android:text="View Homework"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                />
+        </RelativeLayout>
+
+    </LinearLayout>
+</LinearLayout>

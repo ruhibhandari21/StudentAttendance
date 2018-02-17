@@ -4,6 +4,14 @@
         "source": "E:\\LEARNING\\StudentAttendance\\library\\build\\intermediates\\bundles\\debug\\res\\drawable\\button_previous_month_selector.xml"
     },
     {
+        "merged": "G:\\PROJECTS\\StudentAttendance1232018\\StudentAttendance\\library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\button_previous_month_selector.xml",
+        "source": "G:\\PROJECTS\\StudentAttendance1232018\\StudentAttendance\\library\\build\\intermediates\\bundles\\debug\\res\\drawable\\button_previous_month_selector.xml"
+    },
+    {
+        "merged": "G:\\PROJECTS\\StudentAttendance1232018\\StudentAttendance\\library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\button_next_month_selector.xml",
+        "source": "G:\\PROJECTS\\StudentAttendance1232018\\StudentAttendance\\library\\build\\intermediates\\bundles\\debug\\res\\drawable\\button_next_month_selector.xml"
+    },
+    {
         "merged": "E:\\LEARNING\\StudentAttendance\\library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\button_next_month_selector.xml",
         "source": "E:\\LEARNING\\StudentAttendance\\library\\build\\intermediates\\bundles\\debug\\res\\drawable\\button_next_month_selector.xml"
     }

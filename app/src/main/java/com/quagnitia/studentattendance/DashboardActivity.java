@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.quagnitia.studentattendance.admin.AdminHomeFragment;
+import com.quagnitia.studentattendance.student.StudentHomeFragment;
 import com.quagnitia.studentattendance.teacher.TeacherHomeFragment;
 import com.quagnitia.studentattendance.utils.PreferencesManager;
 
@@ -73,8 +74,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 CURRENTFRAGMENT = SCREENS.TEACHER_HOME.toString();
                 break;
             case STUDENT_HOME:
-                fragment = AdminHomeFragment.newInstance("", "");
-                CURRENTFRAGMENT = SCREENS.ADMIN_HOME.toString();
+                fragment = StudentHomeFragment.newInstance("", "");
+                CURRENTFRAGMENT = SCREENS.STUDENT_HOME.toString();
                 break;
         }
         fragmentTransaction.replace(R.id.fragmentContainer, fragment, CURRENTFRAGMENT);
