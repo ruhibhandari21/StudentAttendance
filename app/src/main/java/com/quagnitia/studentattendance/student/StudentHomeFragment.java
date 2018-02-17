@@ -14,6 +14,7 @@ import com.quagnitia.studentattendance.teacher.AddHomeworkActivity;
 import com.quagnitia.studentattendance.teacher.AttendanceEntryActivity;
 import com.quagnitia.studentattendance.teacher.AttendanceReportActivity;
 import com.quagnitia.studentattendance.teacher.ExamResults;
+import com.quagnitia.studentattendance.teacher.ViewAllHomeworkActivity;
 
 public class StudentHomeFragment extends Fragment implements View.OnClickListener {
     private static final String ARG_PARAM1 = "param1";
@@ -95,7 +96,7 @@ public class StudentHomeFragment extends Fragment implements View.OnClickListene
                 break;
 
             case R.id.rel_add_homework:
-                intent = new Intent(mContext, AddHomeworkActivity.class);
+                intent = new Intent(mContext, ViewAllHomeworkActivity.class);
                 mContext.startActivity(intent);
                 break;
         }
