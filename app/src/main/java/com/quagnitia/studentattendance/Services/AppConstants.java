@@ -48,5 +48,4 @@ public class AppConstants {
 
     public static String LOGOUT="logout";
 
-
 }
