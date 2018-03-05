@@ -15,6 +15,7 @@ import com.quagnitia.studentattendance.teacher.AttendanceEntryActivity;
 import com.quagnitia.studentattendance.teacher.AttendanceReportActivity;
 import com.quagnitia.studentattendance.teacher.ExamResults;
 import com.quagnitia.studentattendance.teacher.ViewAllHomeworkActivity;
+import com.quagnitia.studentattendance.teacher.ViewAllUploads;
 
 public class StudentHomeFragment extends Fragment implements View.OnClickListener {
     private static final String ARG_PARAM1 = "param1";
@@ -85,8 +86,8 @@ public class StudentHomeFragment extends Fragment implements View.OnClickListene
                 intent = new Intent(mContext, AttendanceReportActivity.class);
                 mContext.startActivity(intent);
                 break;
-            case R.id.rel_attendance_entry:
-                intent = new Intent(mContext, AttendanceEntryActivity.class);
+            case R.id.rel_view_timetable:
+                intent = new Intent(mContext, ViewAllUploads.class);
                 mContext.startActivity(intent);
                 break;
 
