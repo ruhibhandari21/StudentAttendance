@@ -1,11 +1,9 @@
 package com.quagnitia.studentattendance.teacher;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
@@ -38,11 +36,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Random;
 
-public class AttendanceReportActivity extends AppCompatActivity implements OnTaskCompleted,View.OnClickListener,AdapterView.OnItemSelectedListener{
+public class AttendanceReportActivity extends AppCompatActivity implements OnTaskCompleted, View.OnClickListener, AdapterView.OnItemSelectedListener {
 
-    private Spinner sp_class,sp_student;
+    private Spinner sp_class, sp_student;
     private CustomCalendarView calendarView;
     private Button btn_save, btn_cancel;
     private ImageView img_back;
@@ -52,11 +49,11 @@ public class AttendanceReportActivity extends AppCompatActivity implements OnTas
     private TextView tv_no_records;
     private PreferencesManager preferencesManager;
     private List<String> list = new ArrayList<>();
-    private List<GetAllStudentByClassName> studentList=new ArrayList<>();
-    private List<String> studentList1=new ArrayList<>();
-    private List<GellAllAttendanceEntry> listall=new ArrayList<>();
+    private List<GetAllStudentByClassName> studentList = new ArrayList<>();
+    private List<String> studentList1 = new ArrayList<>();
+    private List<GellAllAttendanceEntry> listall = new ArrayList<>();
     private ViewAllStudentByClassNameAdapter viewAllStudentByClassNameAdapter;
-    private String selectedStudentList="";
+    private String selectedStudentList = "";
     Calendar currentCalendar;
 
 
@@ -64,18 +61,17 @@ public class AttendanceReportActivity extends AppCompatActivity implements OnTas
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attendance_report);
-        preferencesManager=PreferencesManager.getInstance(this);
-        mContext=this;
+        preferencesManager = PreferencesManager.getInstance(this);
+        mContext = this;
         initUI();
         initListener();
         callGetAllClassWS();
     }
 
-    public void initUI()
-    {
-        sp_class=(Spinner)findViewById(R.id.sp_class);
-        sp_student=(Spinner)findViewById(R.id.sp_student);
-        calendarView=(CustomCalendarView)findViewById(R.id.calendar_view);
+    public void initUI() {
+        sp_class = (Spinner) findViewById(R.id.sp_class);
+        sp_student = (Spinner) findViewById(R.id.sp_student);
+        calendarView = (CustomCalendarView) findViewById(R.id.calendar_view);
         currentCalendar = Calendar.getInstance(Locale.getDefault());
         calendarView.setFirstDayOfWeek(Calendar.MONDAY);
         calendarView.setShowOverflowDate(false);
@@ -87,19 +83,19 @@ public class AttendanceReportActivity extends AppCompatActivity implements OnTas
         String formattedDate = df.format(c);
     }
 
-    public void initListener()
-    {
+    public void initListener() {
         sp_class.setOnItemSelectedListener(this);
         sp_student.setOnItemSelectedListener(this);
         img_back.setOnClickListener(this);
     }
+
     public void callGetAllClassWS() {
-        new WebService(mContext, this, null, "getAllClass").execute(AppConstants.BASE_URL + AppConstants.GET_CLASS_DETAILS+"?classname="+preferencesManager.getClassname());
+        new WebService(mContext, this, null, "getAllClass").execute(AppConstants.BASE_URL + AppConstants.GET_CLASS_DETAILS + "?classname=" + preferencesManager.getClassname());
     }
 
     public void callGetAllStudentWS(String classabbrevation) {
-        HashMap hashMap=new HashMap();
-        hashMap.put("Classname",classabbrevation);
+        HashMap hashMap = new HashMap();
+        hashMap.put("Classname", classabbrevation);
         new WebService(this, this, hashMap, "getAllStudentByClassname").execute(AppConstants.BASE_URL + AppConstants.GET_ALL_STUDENT_BY_CLASSNAME);
     }
 
@@ -107,28 +103,30 @@ public class AttendanceReportActivity extends AppCompatActivity implements OnTas
         Date c = Calendar.getInstance().getTime();
         SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
         String formattedDate = df.format(c);
-        String userid="";
-        for(int i=0;i<studentList.size();i++)
-        {
-            if(sp_student.getSelectedItem().toString().equals(studentList.get(i).getFullname()))
-            {
-                userid=studentList.get(i).getUserid();
+        String userid = "";
+        for (int i = 0; i < studentList.size(); i++) {
+            if (sp_student.getSelectedItem().toString().equals(studentList.get(i).getFullname())) {
+                userid = studentList.get(i).getUserid();
                 break;
             }
         }
 
         new WebService(this, this, null, "getAllAttendanceEntry").execute
-                (AppConstants.BASE_URL + AppConstants.GET_ALL_ATTENDANCE_ENTRY_PERMONTH+"?Classname="+sp_class.getSelectedItem().toString()+"&UserId="+userid);
+                (AppConstants.BASE_URL + AppConstants.GET_ALL_ATTENDANCE_ENTRY_PERMONTH + "?Classname=" + sp_class.getSelectedItem().toString() + "&UserId=" + userid);
     }
 
     @Override
     public void onClick(View v) {
-
+        switch (v.getId()) {
+            case R.id.img_back:
+                finish();
+                break;
+        }
     }
 
     @Override
     public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
-        if(studentList!=null)
+        if (studentList != null)
             studentList.clear();
         if (arg0.getId() == R.id.sp_class) {
             callGetAllStudentWS(list.get(position));
@@ -161,16 +159,11 @@ public class AttendanceReportActivity extends AppCompatActivity implements OnTas
                                 JSONObject jsonObject1 = jsonArray.optJSONObject(i);
                                 list.add(jsonObject1.optString("ClassAbbrevation"));
                             }
-//                            tv_no_records.setVisibility(View.GONE);
-//                            recycler_view.setVisibility(View.VISIBLE);
                             ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_spinner_item, list);
                             aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                             sp_class.setAdapter(aa);
-                            // callGetAllStudentWS(sp_class.getSelectedItem().toString());
 
                         } else {
-//                            tv_no_records.setVisibility(View.VISIBLE);
-//                            recycler_view.setVisibility(View.GONE);
                             Toast.makeText(mContext, "No Records Found", Toast.LENGTH_SHORT).show();
                             finish();
                         }
@@ -182,18 +175,15 @@ public class AttendanceReportActivity extends AppCompatActivity implements OnTas
                     break;
 
 
-
                 case "getAllAttendanceEntry":
                     try {
-                        JSONArray jsonArray=new JSONArray(jsonObject.optString("students"));
-                        if(jsonArray.length()!=0)
-                        {
-                            if(listall!=null)
+                        JSONArray jsonArray = new JSONArray(jsonObject.optString("students"));
+                        if (jsonArray.length() != 0) {
+                            if (listall != null)
                                 listall.clear();
-                            for(int i=0;i<jsonArray.length();i++)
-                            {
-                                JSONObject jsonObject1=jsonArray.optJSONObject(i);
-                                GellAllAttendanceEntry getAllAttendanceEntry= new GellAllAttendanceEntry();
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject jsonObject1 = jsonArray.optJSONObject(i);
+                                GellAllAttendanceEntry getAllAttendanceEntry = new GellAllAttendanceEntry();
                                 getAllAttendanceEntry.setCurrentDate(jsonObject1.optString("CurrentDate"));
                                 getAllAttendanceEntry.setClassname(jsonObject1.optString("Classname"));
                                 getAllAttendanceEntry.setUserid(jsonObject1.optString("UserId"));
@@ -210,30 +200,23 @@ public class AttendanceReportActivity extends AppCompatActivity implements OnTas
 
                         }
 
-                    }
-                    catch (Exception e)
-                    {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
 
                     break;
 
                 case "getAllStudentByClassname":
-                    try
-                    {
-                        if(studentList1!=null)
+                    try {
+                        if (studentList1 != null)
                             studentList1.clear();
 
-//                        if(studentList!=null)
-//                            studentList.clear();
-                        JSONArray jsonArray=new JSONArray(jsonObject.optString("students"));
-                        if(jsonArray.length()!=0)
-                        {
+                        JSONArray jsonArray = new JSONArray(jsonObject.optString("students"));
+                        if (jsonArray.length() != 0) {
 
-                            for(int i=0;i<jsonArray.length();i++)
-                            {
-                                JSONObject jsonObject1=jsonArray.optJSONObject(i);
-                                GetAllStudentByClassName getAllStudents=new GetAllStudentByClassName();
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject jsonObject1 = jsonArray.optJSONObject(i);
+                                GetAllStudentByClassName getAllStudents = new GetAllStudentByClassName();
                                 getAllStudents.setUserid(jsonObject1.optString("UserId"));
                                 getAllStudents.setFullname(jsonObject1.optString("StudentFullname"));
                                 getAllStudents.setAdmission_no(jsonObject1.optString("AdmissionNo"));
@@ -257,16 +240,12 @@ public class AttendanceReportActivity extends AppCompatActivity implements OnTas
                             aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                             sp_student.setAdapter(aa);
 
-                        }
-                        else
-                        {
+                        } else {
                             Toast.makeText(mContext, "No Records Found", Toast.LENGTH_SHORT).show();
                             finish();
                         }
 
-                    }
-                    catch(Exception e)
-                    {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     callGetAllAttendanceEntry();
@@ -276,9 +255,8 @@ public class AttendanceReportActivity extends AppCompatActivity implements OnTas
 
             }
         } else {
-                Toast.makeText(mContext, jsonObject.optString("message"), Toast.LENGTH_SHORT).show();
-            }
-
+            Toast.makeText(mContext, jsonObject.optString("message"), Toast.LENGTH_SHORT).show();
+        }
 
 
     }
@@ -289,6 +267,7 @@ public class AttendanceReportActivity extends AppCompatActivity implements OnTas
         SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
         long fromMilli = 0, toMilli = 0, cellMilli = 0;
         String colorCode;
+
         public ColorDecorator() {
 
         }
@@ -298,38 +277,26 @@ public class AttendanceReportActivity extends AppCompatActivity implements OnTas
             try {
 
 
-
                 String cellDate = formatter.format(cell.getDate());
 
                 Date c = cell.getDate();
                 SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
                 String formattedDate = df.format(c);
 
-                for(int i=0;i<listall.size();i++)
-                {
-                    if(formattedDate.equals(listall.get(i).getCurrentDate()) && listall.get(i).getPresent().equals("1"))
-                    {
+                for (int i = 0; i < listall.size(); i++) {
+                    if (formattedDate.equals(listall.get(i).getCurrentDate()) && listall.get(i).getPresent().equals("1")) {
                         cell.setBackgroundColor(getResources().getColor(android.R.color.holo_green_dark));
-                    }
-                    else if(formattedDate.equals(listall.get(i).getCurrentDate()) && listall.get(i).getAbsent().equals("1"))
-                    {
+                    } else if (formattedDate.equals(listall.get(i).getCurrentDate()) && listall.get(i).getAbsent().equals("1")) {
                         cell.setBackgroundColor(getResources().getColor(android.R.color.holo_red_dark));
-                    }
-                    else if(formattedDate.equals(listall.get(i).getCurrentDate()) && listall.get(i).getPresent().equals("0") && listall.get(i).getAbsent().equals("0"))
-                    {
+                    } else if (formattedDate.equals(listall.get(i).getCurrentDate()) && listall.get(i).getPresent().equals("0") && listall.get(i).getAbsent().equals("0")) {
                         cell.setBackgroundColor(getResources().getColor(android.R.color.white));
                     }
                 }
 
 
-
-
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-
 
 
         }
