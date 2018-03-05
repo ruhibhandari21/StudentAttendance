@@ -136,6 +136,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     intent.putExtra("Role",role+"");
                     startActivity(intent);
                     finish();
+
+
                     break;
             }
         }

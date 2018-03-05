@@ -55,5 +55,6 @@ public class RoleSelectionActivity extends AppCompatActivity implements View.OnC
         intent = new Intent(mContext, LoginActivity.class);
         intent.putExtra("user_role", role);
         startActivity(intent);
+        finish();
     }
 }

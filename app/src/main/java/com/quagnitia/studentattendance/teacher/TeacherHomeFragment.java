@@ -101,6 +101,10 @@ public class TeacherHomeFragment extends Fragment implements View.OnClickListene
                 mContext.startActivity(intent);
             break;
             case R.id.rel_view_timetable:
+
+
+
+
 //                intent=new Intent(getActivity(),AddSubjectActivity.class);
 //                getActivity().startActivity(intent);
                 break;
