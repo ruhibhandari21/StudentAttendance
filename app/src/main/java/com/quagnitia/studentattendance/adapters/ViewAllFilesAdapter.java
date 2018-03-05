@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.quagnitia.studentattendance.R;
 import com.quagnitia.studentattendance.models.AllFilesModel;
 import com.quagnitia.studentattendance.teacher.ViewAllUploads;
+import com.quagnitia.studentattendance.utils.PreferencesManager;
 
 import java.util.List;
 
@@ -27,6 +28,7 @@ public class ViewAllFilesAdapter extends RecyclerView.Adapter<ViewAllFilesAdapte
 
     private List<AllFilesModel> classList;
     private Context mContext;
+    private PreferencesManager preferencesManager;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView tv_imagename;
@@ -36,6 +38,7 @@ public class ViewAllFilesAdapter extends RecyclerView.Adapter<ViewAllFilesAdapte
             super(view);
             tv_imagename = (TextView) view.findViewById(R.id.tv_imagename);
             img_delete = (ImageView) view.findViewById(R.id.img_delete);
+            preferencesManager=PreferencesManager.getInstance(mContext);
         }
     }
 
@@ -56,6 +59,17 @@ public class ViewAllFilesAdapter extends RecyclerView.Adapter<ViewAllFilesAdapte
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         final AllFilesModel getAllClass = classList.get(position);
         holder.tv_imagename.setText(getAllClass.getImagename());
+
+
+        if(preferencesManager.getRole().equals("3"))
+        {
+            holder.img_delete.setVisibility(View.GONE);
+        }
+        else
+        {
+            holder.img_delete.setVisibility(View.VISIBLE);
+        }
+
 
         holder.img_delete.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.quagnitia.studentattendance.R;
 import com.quagnitia.studentattendance.models.GetAllHomework;
 import com.quagnitia.studentattendance.teacher.ViewAllHomeworkActivity;
+import com.quagnitia.studentattendance.utils.PreferencesManager;
 
 import java.util.List;
 
@@ -27,6 +28,7 @@ public class ViewAllHomeWorkAdapter extends RecyclerView.Adapter<ViewAllHomeWork
 
     private List<GetAllHomework> classList;
     private Context mContext;
+    private PreferencesManager preferencesManager;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView tv_classname, tv_enter, tv_subject_name, tv_examtype, tv_max_marks, tv_exam_date;
@@ -42,6 +44,7 @@ public class ViewAllHomeWorkAdapter extends RecyclerView.Adapter<ViewAllHomeWork
             tv_enter = (TextView) view.findViewById(R.id.tv_enter);
             img_edit = (ImageView) view.findViewById(R.id.img_edit);
             img_delete = (ImageView) view.findViewById(R.id.img_delete);
+            preferencesManager=PreferencesManager.getInstance(mContext);
         }
     }
 
@@ -67,6 +70,17 @@ public class ViewAllHomeWorkAdapter extends RecyclerView.Adapter<ViewAllHomeWork
         holder.tv_exam_date.setVisibility(View.GONE);
         holder.tv_max_marks.setVisibility(View.GONE);
         holder.tv_enter.setVisibility(View.GONE);
+
+
+        if(preferencesManager.getRole().equals("3"))
+        {
+            holder.img_delete.setVisibility(View.GONE);
+        }
+        else
+        {
+            holder.img_delete.setVisibility(View.VISIBLE);
+        }
+
 
         holder.img_delete.setOnClickListener(new View.OnClickListener() {
             @Override
