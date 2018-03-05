@@ -126,8 +126,8 @@ public class AttendanceReportActivity extends AppCompatActivity implements OnTas
 
     @Override
     public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
-        if (studentList != null)
-            studentList.clear();
+//        if (studentList != null)
+//            studentList.clear();
         if (arg0.getId() == R.id.sp_class) {
             callGetAllStudentWS(list.get(position));
         } else if (arg0.getId() == R.id.sp_student) {
