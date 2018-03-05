@@ -130,6 +130,7 @@
 
 
     <TextView
+        android:visibility="gone"
         android:id="@+id/tv_forgotpass"
         android:textColor="@color/colorBlack"
         android:textSize="16sp"
