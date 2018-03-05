@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.quagnitia.studentattendance.R;
@@ -25,6 +26,7 @@ import com.quagnitia.studentattendance.utils.PreferencesManager;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +34,7 @@ public class ExamResults extends AppCompatActivity implements OnTaskCompleted, V
     private ImageView img_back;
     private Context mContext;
     private Spinner sp_student;
+    private TextView tv_total;
     private ExamResultAdapter examResultAdapter;
     private List<GetAllStudentByClassName> studentList = new ArrayList<>();
     private List<String> studentList1 = new ArrayList<>();
@@ -51,6 +54,7 @@ public class ExamResults extends AppCompatActivity implements OnTaskCompleted, V
     }
 
     public void initUI() {
+        tv_total=(TextView)findViewById(R.id.tv_total);
         img_back = (ImageView) findViewById(R.id.img_back);
         sp_student = (Spinner) findViewById(R.id.sp_student);
         recycler_view=(RecyclerView)findViewById(R.id.recycler_view);
@@ -153,6 +157,7 @@ public class ExamResults extends AppCompatActivity implements OnTaskCompleted, V
                 case "getAllStudentMarks":
                     try {
                         JSONArray jsonArray = new JSONArray(jsonObject.optString("result"));
+                        float max_marks=0,obtained_marks=0;
                         if (jsonArray.length() != 0) {
                             if(listgetAllResult!=null)
                                 listgetAllResult.clear();
@@ -183,17 +188,42 @@ public class ExamResults extends AppCompatActivity implements OnTaskCompleted, V
                                     getAllResult.setRemark("Pass");
                                 }
 
-
+                                max_marks=max_marks+Float.valueOf(jsonObject1.optString("MaxMarks"));
+                                obtained_marks=obtained_marks+Float.valueOf(jsonObject1.optString("MarksObtained"));
                                 listgetAllResult.add(getAllResult);
                             }
 
                             examResultAdapter=new ExamResultAdapter(mContext,listgetAllResult);
                             recycler_view.setAdapter(examResultAdapter);
+                            DecimalFormat formater = new DecimalFormat("#.00");
+                            tv_total.setText(" Percentage: "+formater.format(((obtained_marks/max_marks)*100)));
+                            float per=((obtained_marks/max_marks)*100);
+                            if(per==66 || per >66)
+                            {
+                                tv_total.append(" (First Class With Distinction)");
+                            }
+                            else if(per==60 || per <=66 && per>=60)
+                            {
+                                tv_total.append(" (First Class)");
+                            }
+                            else if(per==55 || per <60 && per>=55)
+                            {
+                                tv_total.append(" (Higher Second Class)");
+                            }
+                            else if(per==50 || per <55 && per>=50)
+                            {
+                                tv_total.append(" (Second Class)");
+                            }
+                            else if(per==40 || per <50 && per>=40)
+                            {
+                                tv_total.append(" (Pass Class)");
+                            }
 
 
                         } else {
                             examResultAdapter=new ExamResultAdapter(mContext,listgetAllResult);
                             recycler_view.setAdapter(examResultAdapter);
+                            tv_total.setText("");
                             Toast.makeText(mContext, "No Records Found", Toast.LENGTH_SHORT).show();
                             finish();
                         }
