@@ -67,11 +67,11 @@ public class ExamResults extends AppCompatActivity implements OnTaskCompleted, V
     }
 
     public void callGetAllStudentWS() {
-        new WebService(this, this, null, "getAllStudentByClassname").execute(AppConstants.BASE_URL + AppConstants.GET_ALL_STUDENT);
+        new WebService(this, this, null, "getAllStudentByClassname").execute(AppConstants.BASE_URL + AppConstants.GET_STUDENT_CLASSNAME+"?classname="+preferencesManager.getClassname());
     }
 
     public void callGetAllStudentMarksWS(int pos) {
-        new WebService(this, this, null, "getAllStudentMarks").execute(AppConstants.BASE_URL + AppConstants.GET_STUDENTS_MARKS+"?Classname="+studentList.get(pos).getClassname()+"&StudentUserId="+studentList.get(pos).getUserid());
+        new WebService(this, this, null, "getAllStudentMarks").execute(AppConstants.BASE_URL + AppConstants.GET_STUDENTS_MARKS+"?Classname="+preferencesManager.getClassname()+"&StudentUserId="+studentList.get(pos).getUserid());
     }
 
 

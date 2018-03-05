@@ -27,6 +27,7 @@ public class AppConstants {
 
     public static String ADD_STUDENT="addStudent";
     public static String GET_ALL_STUDENT="getAllStudents";
+    public static String GET_STUDENT_CLASSNAME="getStudentByClassname";
     public static String DELETE_STUDENT="deleteStudent";
     public static String EDIT_STUDENT="editStudent";
 

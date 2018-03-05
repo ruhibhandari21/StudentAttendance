@@ -23,6 +23,7 @@ import com.quagnitia.studentattendance.Services.WebService;
 import com.quagnitia.studentattendance.adapters.ViewAllSubjectAdapter;
 import com.quagnitia.studentattendance.admin.ViewAllStudentActivity;
 import com.quagnitia.studentattendance.models.GetAllSubjects;
+import com.quagnitia.studentattendance.utils.PreferencesManager;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -50,10 +51,12 @@ public class AddExamActivity extends AppCompatActivity implements OnTaskComplete
     private TextView tv_exam_date;
     private Calendar myCalendar;
     private DatePickerDialog.OnDateSetListener date;
+    private PreferencesManager preferencesManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_exam);
+        preferencesManager=PreferencesManager.getInstance(this);
         mContext = AddExamActivity.this;
         listExamType.add("UNIT_TEST");
         listExamType.add("HALF_YEARLY_EXAM");
@@ -114,7 +117,7 @@ public class AddExamActivity extends AppCompatActivity implements OnTaskComplete
     }
 
     public void callGetAllClassWS() {
-        new WebService(mContext, this, null, "getAllClass").execute(AppConstants.BASE_URL + AppConstants.GET_ALL_CLASS);
+        new WebService(mContext, this, null, "getAllClass").execute(AppConstants.BASE_URL + AppConstants.GET_CLASS_DETAILS + "?classname=" + preferencesManager.getClassname());
     }
 
     public void callGetAllSubjectsWS() {

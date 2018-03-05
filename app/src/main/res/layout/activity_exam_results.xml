@@ -147,7 +147,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:fontFamily="sans-serif-smallcaps"
-            android:text="Marks Entry"
+            android:text="Exam Results"
             android:textColor="@color/colorWhite"
             android:textSize="18sp"
             android:textStyle="bold" />
