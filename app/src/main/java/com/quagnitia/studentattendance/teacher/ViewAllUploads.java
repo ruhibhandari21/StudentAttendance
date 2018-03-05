@@ -151,7 +151,6 @@ public class ViewAllUploads extends AppCompatActivity implements OnTaskCompleted
                     break;
 
                 case "viewFile":
-                    Toast.makeText(mContext, jsonObject.optString("message"), Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(mContext,ViewImageActivity.class);
                     intent.putExtra("Url",jsonObject.optString("image"));
                     intent.putExtra("ImageName",jsonObject.optString("imagename"));
