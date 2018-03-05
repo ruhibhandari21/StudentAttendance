@@ -95,7 +95,9 @@
         <activity android:name=".teacher.ExamResults" />
         <activity android:name=".teacher.AddHomeworkActivity" />
         <activity android:name=".teacher.ViewAllHomeworkActivity" />
-        <activity android:name=".teacher.UploadTimeTableActivity"></activity>
+        <activity android:name=".teacher.UploadTimeTableActivity" />
+        <activity android:name=".teacher.ViewAllUploads" />
+        <activity android:name=".teacher.ViewImageActivity"></activity>
     </application>
 
 </manifest>

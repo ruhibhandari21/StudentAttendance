@@ -51,6 +51,9 @@ public class AppConstants {
     public static String DELETE_HOMEWORK="deleteHomework";
 
     public static String UPLOAD_FILE="uploadFile";
+    public static String FETCH_FILE="getAllFiles";
+    public static String DELETE_FILE="deleteFile";
+    public static String VIEW_FILE="viewFile";
 
     public static String LOGOUT="logout";
 

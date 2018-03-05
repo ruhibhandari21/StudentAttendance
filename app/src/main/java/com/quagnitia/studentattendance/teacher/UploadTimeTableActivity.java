@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.quagnitia.studentattendance.R;
@@ -37,6 +38,7 @@ public class UploadTimeTableActivity extends AppCompatActivity implements View.O
     private PreferencesManager preferencesManager;
     private Context mContext;
     private Spinner sp_class;
+    private TextView tv_view_all;
     private Uri image_uri;
     private ImageView img_back;
     private String image_path = "";
@@ -56,18 +58,24 @@ public class UploadTimeTableActivity extends AppCompatActivity implements View.O
         btn_camera = (Button) findViewById(R.id.btn_camera);
         btn_gellery = (Button) findViewById(R.id.btn_gallery);
         img_back = (ImageView) findViewById(R.id.img_back);
+        tv_view_all=(TextView) findViewById(R.id.tv_view_all);
     }
 
     public void initListener() {
         btn_camera.setOnClickListener(this);
         btn_gellery.setOnClickListener(this);
         img_back.setOnClickListener(this);
+        tv_view_all.setOnClickListener(this);
     }
 
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.tv_view_all:
+                Intent in=new Intent(mContext,ViewAllUploads.class);
+                startActivity(in);
+                break;
             case R.id.img_back:
                 finish();
                 break;
