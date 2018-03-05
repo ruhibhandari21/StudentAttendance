@@ -67,11 +67,12 @@ public class AddHomeworkActivity extends AppCompatActivity implements View.OnCli
 
 
     public void callGetAllClassWS() {
-        new WebService(mContext, this, null, "getAllClass").execute(AppConstants.BASE_URL + AppConstants.GET_ALL_CLASS);
+        new WebService(mContext, this, null, "getAllClass").execute(AppConstants.BASE_URL + AppConstants.GET_CLASS_DETAILS+"?classname="+preferencesManager.getClassname());
     }
 
     public void callGetAllSubjectsWS() {
-        new WebService(this, this, null, "getAllSubjects").execute(AppConstants.BASE_URL + AppConstants.GET_ALL_SUBJECTS);
+
+        new WebService(this, this, null, "getAllSubjects").execute(AppConstants.BASE_URL + AppConstants.GET_ALL_SUBJECTS_BY_CLASSNAME+"?Classname="+preferencesManager.getClassname());
     }
 
     public void callAddHomeWorkWS()

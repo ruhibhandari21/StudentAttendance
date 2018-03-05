@@ -20,6 +20,7 @@ import com.quagnitia.studentattendance.adapters.ViewAllExams;
 import com.quagnitia.studentattendance.adapters.ViewAllHomeWorkAdapter;
 import com.quagnitia.studentattendance.models.GetAllExams;
 import com.quagnitia.studentattendance.models.GetAllHomework;
+import com.quagnitia.studentattendance.utils.PreferencesManager;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -35,13 +36,14 @@ public class ViewAllHomeworkActivity extends AppCompatActivity implements View.O
     private Context mContext;
     private int pos=-1;
     private TextView tv_no_records;
+    private PreferencesManager preferencesManager;
     List<GetAllHomework> list=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         overridePendingTransition(0,0);
         setContentView(R.layout.activity_view_all_homework);
-
+        preferencesManager=PreferencesManager.getInstance(this);
         mContext=this;
         initUI();
         initListener();
@@ -74,7 +76,7 @@ public class ViewAllHomeworkActivity extends AppCompatActivity implements View.O
 
     public void callGetAllHomeworkWS()
     {
-        new WebService(this,this,null,"getAllHomework").execute(AppConstants.BASE_URL+AppConstants.GET_HOMEWORK);
+        new WebService(this,this,null,"getAllHomework").execute(AppConstants.BASE_URL+AppConstants.GET_HOMEWORK_BY_CLASSNAME+"?Classname="+preferencesManager.getClassname());
     }
 
     public void callDeleteClassWS(int pos)

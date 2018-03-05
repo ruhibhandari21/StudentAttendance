@@ -47,6 +47,7 @@ public class AppConstants {
 
     public static String ADD_HOMEWORK="addHomework";
     public static String GET_HOMEWORK="getHomework";
+    public static String GET_HOMEWORK_BY_CLASSNAME="getHomeworkByClassname";
     public static String DELETE_HOMEWORK="deleteHomework";
 
     public static String LOGOUT="logout";
