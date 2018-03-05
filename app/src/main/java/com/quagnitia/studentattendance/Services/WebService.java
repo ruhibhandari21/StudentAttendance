@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.quagnitia.studentattendance.R;
 
@@ -204,9 +205,8 @@ public class WebService extends AsyncTask<String, String, String> {
             }
 
             JSONObject jsonObject = new JSONObject(result);
-            conn.disconnect();
             listener.onTaskCompleted(jsonObject, result, TAG);
-
+            conn.disconnect();
 
         } catch (Exception e) {
             Log.e("ReadJSONFeedTask", e.getLocalizedMessage() + "");
