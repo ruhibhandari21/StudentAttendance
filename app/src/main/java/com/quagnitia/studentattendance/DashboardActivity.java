@@ -32,7 +32,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     private String CURRENTFRAGMENT = "";
     private Fragment fragment;
     private PreferencesManager preferencesManager;
-    private TextView tv_logout;
+    private TextView tv_logout,tv_header_title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,14 +45,18 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
         if(preferencesManager.getRole().equals("1"))
         {
+            tv_header_title.setText("Admin Management");
             callSetupFragment(SCREENS.ADMIN_HOME, null);
+
         }
         else if(preferencesManager.getRole().equals("2"))
         {
+            tv_header_title.setText("Teacher Management");
             callSetupFragment(SCREENS.TEACHER_HOME, null);
         }
         else if(preferencesManager.getRole().equals("3"))
         {
+            tv_header_title.setText("Student Management");
             callSetupFragment(SCREENS.STUDENT_HOME, null);
         }
 
@@ -61,6 +65,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     public void initUI() {
 //        img_menu = (ImageView) findViewById(R.id.img_menu);
         tv_logout=(TextView)findViewById(R.id.tv_logout);
+        tv_header_title=(TextView)findViewById(R.id.tv_header_title);
     }
 
     public void initListener() {
