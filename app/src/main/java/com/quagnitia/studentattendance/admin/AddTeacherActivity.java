@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,9 +19,12 @@ import com.quagnitia.studentattendance.Services.AppConstants;
 import com.quagnitia.studentattendance.Services.OnTaskCompleted;
 import com.quagnitia.studentattendance.Services.WebService;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class AddTeacherActivity extends AppCompatActivity implements View.OnClickListener,OnTaskCompleted {
 
@@ -28,10 +33,12 @@ public class AddTeacherActivity extends AppCompatActivity implements View.OnClic
     private Button btn_cancel, btn_register;
     private Intent intent;
     private Context mContext;
+    private Spinner sp_class;
     private int pos=-1;
     private String UserId="";
     private EditText edt_username,edt_password,edt_emailid,edt_full_name,edt_mobileno;
     private boolean isEdit=false;
+    private List<String> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,8 +82,12 @@ public class AddTeacherActivity extends AppCompatActivity implements View.OnClic
         edt_emailid=(EditText) findViewById(R.id.edt_email_id);
         edt_full_name=(EditText) findViewById(R.id.edt_full_name);
         edt_mobileno=(EditText) findViewById(R.id.edt_mobileno);
+        sp_class=(Spinner)findViewById(R.id.sp_class);
+        callGetAllClassWS();
     }
-
+    public void callGetAllClassWS() {
+        new WebService(this, this, null, "getAllClass").execute(AppConstants.BASE_URL + AppConstants.GET_ALL_CLASS);
+    }
     public void initListener() {
         img_back.setOnClickListener(this);
         tv_view_all.setOnClickListener(this);
@@ -153,6 +164,30 @@ public class AddTeacherActivity extends AppCompatActivity implements View.OnClic
         {
             switch(TAG)
             {
+                case "getAllClass":
+                    try {
+                        JSONArray jsonArray = new JSONArray(jsonObject.optString("classes"));
+                        if (jsonArray.length() != 0) {
+
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject jsonObject1 = jsonArray.optJSONObject(i);
+                                list.add(jsonObject1.optString("ClassAbbrevation"));
+                            }
+
+                            ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_spinner_item, list);
+                            aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            sp_class.setAdapter(aa);
+                        } else {
+                            Toast.makeText(mContext, "No Records Found", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    break;
+
                 case "addTeacher":
                     isEdit=false;
                     UserId="";

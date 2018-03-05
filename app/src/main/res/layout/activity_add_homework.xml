@@ -164,7 +164,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:fontFamily="sans-serif-smallcaps"
-            android:text="Add Student"
+            android:text="Add Homework"
             android:textColor="@color/colorWhite"
             android:textSize="18sp"
             android:textStyle="bold" />
