@@ -77,7 +77,7 @@ public class WebService extends AsyncTask<String, String, String> {
         try {
             url = new URL(requestURL);
 
-            if (TAG.equalsIgnoreCase("Update_Profile_Info")) {
+            if (TAG.equalsIgnoreCase("UploadFileWS")) {
                 final MultipartUtility http = new MultipartUtility(url);
                 http.addFilePartData(postDataParams);
                 final byte[] bytes = http.finish();

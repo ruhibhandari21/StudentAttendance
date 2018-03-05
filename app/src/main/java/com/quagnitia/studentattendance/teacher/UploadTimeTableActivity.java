@@ -17,7 +17,9 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 import com.quagnitia.studentattendance.R;
+import com.quagnitia.studentattendance.Services.AppConstants;
 import com.quagnitia.studentattendance.Services.OnTaskCompleted;
+import com.quagnitia.studentattendance.Services.WebService;
 import com.quagnitia.studentattendance.utils.PreferencesManager;
 
 import org.json.JSONObject;
@@ -25,6 +27,7 @@ import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.HashMap;
 
 public class UploadTimeTableActivity extends AppCompatActivity implements View.OnClickListener,OnTaskCompleted,AdapterView.OnItemSelectedListener {
 
@@ -105,8 +108,17 @@ switch (v.getId())
         }
      //   imageLoader.displayImage("file://" + destination.getAbsolutePath(), circularImageView, imageOptions2);
         image_path = "file://" + destination.getAbsolutePath();
+        callUploadImage();
 //        circularImageView.setImageBitmap(thumbnail);
     }
+
+    public void callUploadImage()
+    {
+        HashMap<String,String> hashMap=new HashMap<>();
+        hashMap.put("uploaded_file",image_path);
+        new WebService(this,this,hashMap,"UploadFileWS").execute(AppConstants.BASE_URL+AppConstants.UPLOAD_FILE);
+    }
+
 
     @SuppressWarnings("deprecation")
     private void onSelectFromGalleryResult(Intent data) {
@@ -133,6 +145,7 @@ switch (v.getId())
 //        bm = BitmapFactory.decodeFile(selectedImagePath, options);
         //imageLoader.displayImage("file://" + selectedImagePath, circularImageView, imageOptions2);
         image_path = "file://" + selectedImagePath;
+        callUploadImage();
 //        circularImageView.setImageBitmap(bm);
     }
 

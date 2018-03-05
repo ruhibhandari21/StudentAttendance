@@ -50,6 +50,8 @@ public class AppConstants {
     public static String GET_HOMEWORK_BY_CLASSNAME="getHomeworkByClassname";
     public static String DELETE_HOMEWORK="deleteHomework";
 
+    public static String UPLOAD_FILE="uploadFile";
+
     public static String LOGOUT="logout";
 
 }

@@ -115,7 +115,7 @@ public class MultipartUtility {
         {
             for (Map.Entry<String, String> entry : hashMapFields.entrySet()) {
 
-                if(entry.getKey().equalsIgnoreCase("photo"))
+                if(entry.getKey().equalsIgnoreCase("uploaded_file"))
                 {
 
 
