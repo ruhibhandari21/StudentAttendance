@@ -102,6 +102,7 @@ public class AddTeacherActivity extends AppCompatActivity implements View.OnClic
         hashMap.put("Fullname",edt_full_name.getText().toString());
         hashMap.put("EmailId",edt_emailid.getText().toString());
         hashMap.put("MobileNo",edt_mobileno.getText().toString());
+        hashMap.put("Classname",sp_class.getSelectedItem().toString());
         hashMap.put("Username",edt_username.getText().toString());
         hashMap.put("Password",edt_password.getText().toString());
         new WebService(this,this,hashMap,"addTeacher").execute(AppConstants.BASE_URL+AppConstants.ADD_TEACHER);
