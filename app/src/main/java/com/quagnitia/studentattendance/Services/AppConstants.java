@@ -16,6 +16,7 @@ public class AppConstants {
 
     public static String ADD_SUBJECT="addSubject";
     public static String GET_ALL_SUBJECTS="getAllSubjects";
+    public static String GET_ALL_SUBJECTS_BY_CLASSNAME="getAllSubjectsByClassname";
     public static String DELETE_SUBJECT="deleteSubject";
     public static String EDIT_SUBJECT="editSubject";
 

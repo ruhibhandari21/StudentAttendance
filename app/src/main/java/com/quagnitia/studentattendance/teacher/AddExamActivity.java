@@ -121,7 +121,7 @@ public class AddExamActivity extends AppCompatActivity implements OnTaskComplete
     }
 
     public void callGetAllSubjectsWS() {
-        new WebService(this,this,null,"getAllSubjects").execute(AppConstants.BASE_URL+AppConstants.GET_ALL_SUBJECTS);
+        new WebService(this,this,null,"getAllSubjects").execute(AppConstants.BASE_URL+AppConstants.GET_ALL_SUBJECTS_BY_CLASSNAME+"?Classname="+preferencesManager.getClassname());
     }
 
 
