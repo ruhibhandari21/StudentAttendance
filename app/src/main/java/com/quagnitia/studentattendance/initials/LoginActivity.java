@@ -126,6 +126,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     preferencesManager.setUserId(jsonObject.optString("user_id"));
                     preferencesManager.setUserName(edt_emailid.getText().toString());
                     preferencesManager.setRole(role+"");
+
+                    if(jsonObject.has("classname"))
+                    {
+                        preferencesManager.setClassname(jsonObject.optString("classname"));
+                    }
+
                     intent=new Intent(mContext,DashboardActivity.class);
                     intent.putExtra("Role",role+"");
                     startActivity(intent);

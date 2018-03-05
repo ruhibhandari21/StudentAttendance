@@ -26,6 +26,7 @@ import com.quagnitia.studentattendance.adapters.ViewAllStudentsAdapter;
 import com.quagnitia.studentattendance.models.GetAllClass;
 import com.quagnitia.studentattendance.models.GetAllStudentByClassName;
 import com.quagnitia.studentattendance.models.GetAllStudents;
+import com.quagnitia.studentattendance.utils.PreferencesManager;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -44,6 +45,7 @@ public class AttendanceEntryActivity extends AppCompatActivity implements View.O
     private Context mContext;
     private TextView tv_current_date;
     private RecyclerView recycler_view;
+    private PreferencesManager preferencesManager;
     private TextView tv_no_records;
     private List<String> list = new ArrayList<>();
     private List<GetAllStudentByClassName> studentList=new ArrayList<>();
@@ -55,6 +57,7 @@ public class AttendanceEntryActivity extends AppCompatActivity implements View.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attendance_entry);
+        preferencesManager=PreferencesManager.getInstance(this);
         mContext = this;
         initUI();
         initListener();
@@ -87,7 +90,7 @@ public class AttendanceEntryActivity extends AppCompatActivity implements View.O
     }
 
     public void callGetAllClassWS() {
-        new WebService(mContext, this, null, "getAllClass").execute(AppConstants.BASE_URL + AppConstants.GET_ALL_CLASS);
+        new WebService(mContext, this, null, "getAllClass").execute(AppConstants.BASE_URL + AppConstants.GET_CLASS_DETAILS+"?classname="+preferencesManager.getClassname());
     }
 
     public void callGetAllStudentWS(String classabbrevation) {

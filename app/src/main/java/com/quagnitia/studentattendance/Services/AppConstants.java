@@ -9,6 +9,7 @@ public class AppConstants {
     public static String LOGIN="login";
     public static String ADD_CLASS="addClass";
     public static String GET_ALL_CLASS="getAllClasses";
+    public static String GET_CLASS_DETAILS="getClassDetails";
     public static String DELETE_CLASS="deleteClass";
     public static String EDIT_CLASS="editClass";
 

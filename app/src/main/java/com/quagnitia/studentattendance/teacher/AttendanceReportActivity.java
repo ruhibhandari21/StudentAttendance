@@ -23,6 +23,7 @@ import com.quagnitia.studentattendance.Services.WebService;
 import com.quagnitia.studentattendance.adapters.ViewAllStudentByClassNameAdapter;
 import com.quagnitia.studentattendance.models.GellAllAttendanceEntry;
 import com.quagnitia.studentattendance.models.GetAllStudentByClassName;
+import com.quagnitia.studentattendance.utils.PreferencesManager;
 import com.stacktips.view.CustomCalendarView;
 import com.stacktips.view.DayDecorator;
 import com.stacktips.view.DayView;
@@ -49,6 +50,7 @@ public class AttendanceReportActivity extends AppCompatActivity implements OnTas
     private TextView tv_current_date;
     private RecyclerView recycler_view;
     private TextView tv_no_records;
+    private PreferencesManager preferencesManager;
     private List<String> list = new ArrayList<>();
     private List<GetAllStudentByClassName> studentList=new ArrayList<>();
     private List<String> studentList1=new ArrayList<>();
@@ -62,6 +64,7 @@ public class AttendanceReportActivity extends AppCompatActivity implements OnTas
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attendance_report);
+        preferencesManager=PreferencesManager.getInstance(this);
         mContext=this;
         initUI();
         initListener();
@@ -91,7 +94,7 @@ public class AttendanceReportActivity extends AppCompatActivity implements OnTas
         img_back.setOnClickListener(this);
     }
     public void callGetAllClassWS() {
-        new WebService(mContext, this, null, "getAllClass").execute(AppConstants.BASE_URL + AppConstants.GET_ALL_CLASS);
+        new WebService(mContext, this, null, "getAllClass").execute(AppConstants.BASE_URL + AppConstants.GET_CLASS_DETAILS+"?classname="+preferencesManager.getClassname());
     }
 
     public void callGetAllStudentWS(String classabbrevation) {

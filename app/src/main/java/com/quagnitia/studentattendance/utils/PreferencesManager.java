@@ -21,8 +21,18 @@ public class PreferencesManager {
 	private static String UserId = "UserId";
 	private static String UserName = "UserName";
 	private static String Role = "Role";
+	private static String Classname = "Classname";
 
 
+	public String getClassname() {
+		return sharedPreferences.getString(Classname, "");
+	}
+
+	public void setClassname(String s) {
+		SharedPreferences.Editor editor = sharedPreferences.edit();
+		editor.putString(Classname, s);
+		editor.commit();
+	}
 	public String getRole() {
 		return sharedPreferences.getString(Role, "");
 	}
