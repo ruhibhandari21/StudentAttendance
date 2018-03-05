@@ -198,7 +198,7 @@
                 android:fontFamily="sans-serif"
                 android:textSize="16sp"
                 android:textColor="@color/colorLightBlack"
-                android:text="View TimeTable"
+                android:text="Upload TimeTable"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
