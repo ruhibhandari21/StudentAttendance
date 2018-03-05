@@ -217,7 +217,27 @@ public class AttendanceReportActivity extends AppCompatActivity implements OnTas
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject jsonObject1 = jsonArray.optJSONObject(i);
                                 GetAllStudentByClassName getAllStudents = new GetAllStudentByClassName();
-                                if(preferencesManager.getUserId().equals(jsonObject1.optString("UserId")))
+                                if(preferencesManager.getRole().equals("3") && preferencesManager.getUserId().equals(jsonObject1.optString("UserId")))
+                                {
+                                    getAllStudents.setUserid(jsonObject1.optString("UserId"));
+                                    getAllStudents.setFullname(jsonObject1.optString("StudentFullname"));
+                                    getAllStudents.setAdmission_no(jsonObject1.optString("AdmissionNo"));
+                                    getAllStudents.setContactno(jsonObject1.optString("MobileNo"));
+                                    getAllStudents.setEmailid(jsonObject1.optString("EmailId"));
+                                    getAllStudents.setFatherfullname(jsonObject1.optString("FatherFullname"));
+                                    getAllStudents.setMotherfullname(jsonObject1.optString("MotherFullname"));
+                                    getAllStudents.setDateofregistration(jsonObject1.optString("DateOfReg"));
+                                    getAllStudents.setFeeeffectivefrom(jsonObject1.optString("FeeEffectiveFrom"));
+                                    getAllStudents.setGender(jsonObject1.optString("Gender"));
+                                    getAllStudents.setClassname(jsonObject1.optString("Classname"));
+                                    getAllStudents.setUsername(jsonObject1.optString("Username"));
+                                    getAllStudents.setPassword(jsonObject1.optString("Password"));
+                                    getAllStudents.setPresent(jsonObject1.optString("Present"));
+                                    getAllStudents.setAbsent(jsonObject1.optString("Absent"));
+                                    studentList.add(getAllStudents);
+                                    studentList1.add(jsonObject1.optString("StudentFullname"));
+                                }
+                                else if(preferencesManager.getRole().equals("2"))
                                 {
                                     getAllStudents.setUserid(jsonObject1.optString("UserId"));
                                     getAllStudents.setFullname(jsonObject1.optString("StudentFullname"));
