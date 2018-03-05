@@ -74,11 +74,13 @@ public class ViewAllHomeWorkAdapter extends RecyclerView.Adapter<ViewAllHomeWork
 
         if(preferencesManager.getRole().equals("3"))
         {
-            holder.img_delete.setVisibility(View.GONE);
+            holder.img_delete.setVisibility(View.INVISIBLE);
+            holder.img_delete.setEnabled(false);
         }
         else
         {
             holder.img_delete.setVisibility(View.VISIBLE);
+            holder.img_delete.setEnabled(true);
         }
 
 

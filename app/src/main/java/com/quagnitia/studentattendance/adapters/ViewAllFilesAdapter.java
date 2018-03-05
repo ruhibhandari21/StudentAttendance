@@ -63,12 +63,15 @@ public class ViewAllFilesAdapter extends RecyclerView.Adapter<ViewAllFilesAdapte
 
         if(preferencesManager.getRole().equals("3"))
         {
-            holder.img_delete.setVisibility(View.GONE);
+            holder.img_delete.setVisibility(View.INVISIBLE);
+            holder.img_delete.setEnabled(false);
         }
         else
         {
             holder.img_delete.setVisibility(View.VISIBLE);
+            holder.img_delete.setEnabled(true);
         }
+
 
 
         holder.img_delete.setOnClickListener(new View.OnClickListener() {
