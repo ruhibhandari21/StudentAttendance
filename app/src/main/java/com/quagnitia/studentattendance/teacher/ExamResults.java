@@ -121,23 +121,47 @@ public class ExamResults extends AppCompatActivity implements OnTaskCompleted, V
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject jsonObject1 = jsonArray.optJSONObject(i);
                                 GetAllStudentByClassName getAllStudents = new GetAllStudentByClassName();
-                                getAllStudents.setUserid(jsonObject1.optString("UserId"));
-                                getAllStudents.setFullname(jsonObject1.optString("StudentFullname"));
-                                getAllStudents.setAdmission_no(jsonObject1.optString("AdmissionNo"));
-                                getAllStudents.setContactno(jsonObject1.optString("MobileNo"));
-                                getAllStudents.setEmailid(jsonObject1.optString("EmailId"));
-                                getAllStudents.setFatherfullname(jsonObject1.optString("FatherFullname"));
-                                getAllStudents.setMotherfullname(jsonObject1.optString("MotherFullname"));
-                                getAllStudents.setDateofregistration(jsonObject1.optString("DateOfReg"));
-                                getAllStudents.setFeeeffectivefrom(jsonObject1.optString("FeeEffectiveFrom"));
-                                getAllStudents.setGender(jsonObject1.optString("Gender"));
-                                getAllStudents.setClassname(jsonObject1.optString("Classname"));
-                                getAllStudents.setUsername(jsonObject1.optString("Username"));
-                                getAllStudents.setPassword(jsonObject1.optString("Password"));
-                                getAllStudents.setPresent(jsonObject1.optString("Present"));
-                                getAllStudents.setAbsent(jsonObject1.optString("Absent"));
-                                studentList.add(getAllStudents);
-                                studentList1.add(jsonObject1.optString("StudentFullname"));
+                                if(preferencesManager.getRole().equals("3") && preferencesManager.getUserId().equals(jsonObject1.optString("UserId")))
+                                {
+                                    getAllStudents.setUserid(jsonObject1.optString("UserId"));
+                                    getAllStudents.setFullname(jsonObject1.optString("StudentFullname"));
+                                    getAllStudents.setAdmission_no(jsonObject1.optString("AdmissionNo"));
+                                    getAllStudents.setContactno(jsonObject1.optString("MobileNo"));
+                                    getAllStudents.setEmailid(jsonObject1.optString("EmailId"));
+                                    getAllStudents.setFatherfullname(jsonObject1.optString("FatherFullname"));
+                                    getAllStudents.setMotherfullname(jsonObject1.optString("MotherFullname"));
+                                    getAllStudents.setDateofregistration(jsonObject1.optString("DateOfReg"));
+                                    getAllStudents.setFeeeffectivefrom(jsonObject1.optString("FeeEffectiveFrom"));
+                                    getAllStudents.setGender(jsonObject1.optString("Gender"));
+                                    getAllStudents.setClassname(jsonObject1.optString("Classname"));
+                                    getAllStudents.setUsername(jsonObject1.optString("Username"));
+                                    getAllStudents.setPassword(jsonObject1.optString("Password"));
+                                    getAllStudents.setPresent(jsonObject1.optString("Present"));
+                                    getAllStudents.setAbsent(jsonObject1.optString("Absent"));
+                                    studentList.add(getAllStudents);
+                                    studentList1.add(jsonObject1.optString("StudentFullname"));
+                                }
+                                else if(preferencesManager.getRole().equals("2"))
+                                {
+                                    getAllStudents.setUserid(jsonObject1.optString("UserId"));
+                                    getAllStudents.setFullname(jsonObject1.optString("StudentFullname"));
+                                    getAllStudents.setAdmission_no(jsonObject1.optString("AdmissionNo"));
+                                    getAllStudents.setContactno(jsonObject1.optString("MobileNo"));
+                                    getAllStudents.setEmailid(jsonObject1.optString("EmailId"));
+                                    getAllStudents.setFatherfullname(jsonObject1.optString("FatherFullname"));
+                                    getAllStudents.setMotherfullname(jsonObject1.optString("MotherFullname"));
+                                    getAllStudents.setDateofregistration(jsonObject1.optString("DateOfReg"));
+                                    getAllStudents.setFeeeffectivefrom(jsonObject1.optString("FeeEffectiveFrom"));
+                                    getAllStudents.setGender(jsonObject1.optString("Gender"));
+                                    getAllStudents.setClassname(jsonObject1.optString("Classname"));
+                                    getAllStudents.setUsername(jsonObject1.optString("Username"));
+                                    getAllStudents.setPassword(jsonObject1.optString("Password"));
+                                    getAllStudents.setPresent(jsonObject1.optString("Present"));
+                                    getAllStudents.setAbsent(jsonObject1.optString("Absent"));
+                                    studentList.add(getAllStudents);
+                                    studentList1.add(jsonObject1.optString("StudentFullname"));
+                                }
+
                             }
                             ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_spinner_item, studentList1);
                             aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -164,33 +188,69 @@ public class ExamResults extends AppCompatActivity implements OnTaskCompleted, V
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject jsonObject1 = jsonArray.optJSONObject(i);
                                 GetAllResult getAllResult = new GetAllResult();
-                                getAllResult.setTeacherUserId(jsonObject1.optString("TeacherUserId"));
-                                getAllResult.setStudentUserId(jsonObject1.optString("StudentUserId"));
-                                getAllResult.setStudentName(jsonObject1.optString("StudentName"));
-                                getAllResult.setClassname(jsonObject1.optString("Classname"));
-                                getAllResult.setSubjectName(jsonObject1.optString("SubjectName"));
-                                getAllResult.setExamDate(jsonObject1.optString("ExamDate"));
-                                getAllResult.setExamType(jsonObject1.optString("ExamType"));
-                                getAllResult.setMaxMarks(jsonObject1.optString("MaxMarks"));
-                                getAllResult.setMarksObtained(jsonObject1.optString("MarksObtained"));
-                                getAllResult.setMinMarks(jsonObject1.optString("MinMarks"));
-
-                                float marksObtained=Float.parseFloat(getAllResult.getMarksObtained());
-                                float totalmarks=Float.parseFloat(getAllResult.getMaxMarks());
-                                float minmarks=Float.parseFloat(getAllResult.getMinMarks());
-
-                                if(marksObtained<minmarks)
+                                if(preferencesManager.getRole().equals("3") && preferencesManager.getUserId().equals(jsonObject1.optString("StudentUserId")))
                                 {
-                                    getAllResult.setRemark("Fail");
+                                    getAllResult.setTeacherUserId(jsonObject1.optString("TeacherUserId"));
+                                    getAllResult.setStudentUserId(jsonObject1.optString("StudentUserId"));
+                                    getAllResult.setStudentName(jsonObject1.optString("StudentName"));
+                                    getAllResult.setClassname(jsonObject1.optString("Classname"));
+                                    getAllResult.setSubjectName(jsonObject1.optString("SubjectName"));
+                                    getAllResult.setExamDate(jsonObject1.optString("ExamDate"));
+                                    getAllResult.setExamType(jsonObject1.optString("ExamType"));
+                                    getAllResult.setMaxMarks(jsonObject1.optString("MaxMarks"));
+                                    getAllResult.setMarksObtained(jsonObject1.optString("MarksObtained"));
+                                    getAllResult.setMinMarks(jsonObject1.optString("MinMarks"));
+
+                                    float marksObtained=Float.parseFloat(getAllResult.getMarksObtained());
+                                    float totalmarks=Float.parseFloat(getAllResult.getMaxMarks());
+                                    float minmarks=Float.parseFloat(getAllResult.getMinMarks());
+
+                                    if(marksObtained<minmarks)
+                                    {
+                                        getAllResult.setRemark("Fail");
+                                    }
+                                    else
+                                    {
+                                        getAllResult.setRemark("Pass");
+                                    }
+
+                                    max_marks=max_marks+Float.valueOf(jsonObject1.optString("MaxMarks"));
+                                    obtained_marks=obtained_marks+Float.valueOf(jsonObject1.optString("MarksObtained"));
+                                    listgetAllResult.add(getAllResult);
                                 }
-                                else
+                                else  if(preferencesManager.getRole().equals("2"))
                                 {
-                                    getAllResult.setRemark("Pass");
+                                    getAllResult.setTeacherUserId(jsonObject1.optString("TeacherUserId"));
+                                    getAllResult.setStudentUserId(jsonObject1.optString("StudentUserId"));
+                                    getAllResult.setStudentName(jsonObject1.optString("StudentName"));
+                                    getAllResult.setClassname(jsonObject1.optString("Classname"));
+                                    getAllResult.setSubjectName(jsonObject1.optString("SubjectName"));
+                                    getAllResult.setExamDate(jsonObject1.optString("ExamDate"));
+                                    getAllResult.setExamType(jsonObject1.optString("ExamType"));
+                                    getAllResult.setMaxMarks(jsonObject1.optString("MaxMarks"));
+                                    getAllResult.setMarksObtained(jsonObject1.optString("MarksObtained"));
+                                    getAllResult.setMinMarks(jsonObject1.optString("MinMarks"));
+
+                                    float marksObtained=Float.parseFloat(getAllResult.getMarksObtained());
+                                    float totalmarks=Float.parseFloat(getAllResult.getMaxMarks());
+                                    float minmarks=Float.parseFloat(getAllResult.getMinMarks());
+
+                                    if(marksObtained<minmarks)
+                                    {
+                                        getAllResult.setRemark("Fail");
+                                    }
+                                    else
+                                    {
+                                        getAllResult.setRemark("Pass");
+                                    }
+
+                                    max_marks=max_marks+Float.valueOf(jsonObject1.optString("MaxMarks"));
+                                    obtained_marks=obtained_marks+Float.valueOf(jsonObject1.optString("MarksObtained"));
+                                    listgetAllResult.add(getAllResult);
                                 }
 
-                                max_marks=max_marks+Float.valueOf(jsonObject1.optString("MaxMarks"));
-                                obtained_marks=obtained_marks+Float.valueOf(jsonObject1.optString("MarksObtained"));
-                                listgetAllResult.add(getAllResult);
+
+
                             }
 
                             examResultAdapter=new ExamResultAdapter(mContext,listgetAllResult);
@@ -245,6 +305,7 @@ public class ExamResults extends AppCompatActivity implements OnTaskCompleted, V
                 recycler_view.setAdapter(examResultAdapter);
             }
             Toast.makeText(mContext, jsonObject.optString("message"), Toast.LENGTH_SHORT).show();
+            tv_total.setText("");
         }
 
 
