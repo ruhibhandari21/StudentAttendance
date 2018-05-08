@@ -1,12 +1,16 @@
 package com.cloverinfosoft.studentattendance.teacher;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,6 +27,12 @@ import com.cloverinfosoft.studentattendance.utils.PreferencesManager;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -149,11 +159,12 @@ public class ViewAllUploads extends AppCompatActivity implements OnTaskCompleted
                     break;
 
                 case "viewFile":
-                    Intent intent=new Intent(mContext,ViewImageActivity.class);
-                    intent.putExtra("Url",jsonObject.optString("image"));
-                    intent.putExtra("ImageName",jsonObject.optString("imagename"));
-                    startActivity(intent);
-                    finish();
+                    new DownloadFileFromURL(jsonObject.optString("imagename")).execute(jsonObject.optString("image"));
+//                    Intent intent=new Intent(mContext,ViewImageActivity.class);
+//                    intent.putExtra("Url",jsonObject.optString("image"));
+//                    intent.putExtra("ImageName",jsonObject.optString("imagename"));
+//                    startActivity(intent);
+//                    finish();
                     break;
 
 
@@ -167,4 +178,98 @@ public class ViewAllUploads extends AppCompatActivity implements OnTaskCompleted
         }
 
     }
+
+
+    class DownloadFileFromURL extends AsyncTask<String, String, String> {
+        ProgressDialog progress;
+        /**
+         * Before starting background thread Show Progress Bar Dialog
+         * */
+String imageName="";
+        DownloadFileFromURL(String imageName)
+        {
+            this.imageName=imageName;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progress = new ProgressDialog(ViewAllUploads.this);
+            progress.setMessage("Loading.......");
+
+            progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progress.setIndeterminate(true);
+            progress.show();
+        }
+
+        /**
+         * Downloading file in background thread
+         * */
+        @Override
+        protected String doInBackground(String... f_url) {
+            int count;
+            try {
+                URL url = new URL(f_url[0]);
+                URLConnection conection = url.openConnection();
+                conection.connect();
+
+                // this will be useful so that you can show a tipical 0-100%
+                // progress bar
+                int lenghtOfFile = conection.getContentLength();
+
+                // download the file
+                InputStream input = new BufferedInputStream(url.openStream(),
+                        8192);
+
+                // Output stream
+                OutputStream output = new FileOutputStream(Environment
+                        .getExternalStorageDirectory().toString()
+                        + "/data/"+imageName);
+
+                byte data[] = new byte[1024];
+
+                long total = 0;
+
+                while ((count = input.read(data)) != -1) {
+                    total += count;
+                    // publishing the progress....
+                    // After this onProgressUpdate will be called
+                    publishProgress("" + (int) ((total * 100) / lenghtOfFile));
+
+                    // writing data to file
+                    output.write(data, 0, count);
+                }
+
+                // flushing output
+                output.flush();
+
+                // closing streams
+                output.close();
+                input.close();
+
+            } catch (Exception e) {
+                Log.e("Error: ", e.getMessage());
+            }
+
+            return null;
+        }
+
+        /**
+         * Updating progress bar
+         * */
+        protected void onProgressUpdate(String... progress) {
+            // setting progress percentage
+        }
+
+        /**
+         * After completing background task Dismiss the progress dialog
+         * **/
+        @Override
+        protected void onPostExecute(String file_url) {
+            // dismiss the dialog after the file was downloaded
+           progress.dismiss();
+
+        }
+    }
+
 }

@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:id="@+id/ll"
-        android:layout_toLeftOf="@+id/img_edit"
+        android:layout_toLeftOf="@+id/img_download"
         android:layout_alignParentLeft="true"
         android:layout_centerInParent="true"
         android:orientation="vertical"
@@ -41,8 +41,14 @@
         android:src="@drawable/ic_edit"
         />
 
+
+    <View
+        android:layout_below="@+id/img_delete"
+        android:background="@color/colorLightGrayBg"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"></View>
+
     <ImageView
-        android:layout_centerInParent="true"
         android:id="@+id/img_delete"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -52,13 +58,16 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-
-
-    <View
-        android:layout_below="@+id/img_delete"
-        android:background="@color/colorLightGrayBg"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"></View>
+    <ImageView
+        android:id="@+id/img_download"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:padding="5dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_download"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/img_delete"
+        />
 
 
 </RelativeLayout>

@@ -32,12 +32,13 @@ public class ViewAllFilesAdapter extends RecyclerView.Adapter<ViewAllFilesAdapte
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView tv_imagename;
-        private ImageView img_delete;
+        private ImageView img_delete,img_download;
 
         public MyViewHolder(View view) {
             super(view);
             tv_imagename = (TextView) view.findViewById(R.id.tv_imagename);
             img_delete = (ImageView) view.findViewById(R.id.img_delete);
+            img_download = (ImageView) view.findViewById(R.id.img_download);
             preferencesManager=PreferencesManager.getInstance(mContext);
         }
     }
@@ -81,7 +82,7 @@ public class ViewAllFilesAdapter extends RecyclerView.Adapter<ViewAllFilesAdapte
             }
         });
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.img_download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ((ViewAllUploads) mContext).callViewFileWS(position);

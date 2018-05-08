@@ -90,7 +90,7 @@
         <activity android:name="com.cloverinfosoft.studentattendance.teacher.ViewAllHomeworkActivity" />
         <activity android:name="com.cloverinfosoft.studentattendance.teacher.UploadTimeTableActivity" />
         <activity android:name="com.cloverinfosoft.studentattendance.teacher.ViewAllUploads" />
-        <activity android:name="com.cloverinfosoft.studentattendance.teacher.ViewImageActivity"></activity>
+      <!--  <activity android:name="com.cloverinfosoft.studentattendance.teacher.ViewImageActivity"></activity>-->
     </application>
 
 </manifest>
