@@ -42,7 +42,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="This lets iCallForHelp to access permission for capturing images"
+                android:text="This lets app to access permission for capturing images"
                 android:textColor="@color/colorBlack"
                 android:textSize="14sp" />
 

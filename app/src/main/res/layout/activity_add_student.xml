@@ -305,7 +305,7 @@
                     android:layout_weight="1.3"
                     android:gravity="center|left"
                     android:paddingRight="10dp"
-                    android:text="Contact No."
+                    android:text="@string/contactnumber"
                     android:textColor="@color/colorLightBlack"
                     android:textSize="14sp" />
 
@@ -317,6 +317,7 @@
                     android:layout_weight="0.7"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
+                    android:hint="eg: 8888888888"
                     android:textColorHint="@color/colorLine" />
             </LinearLayout>
 

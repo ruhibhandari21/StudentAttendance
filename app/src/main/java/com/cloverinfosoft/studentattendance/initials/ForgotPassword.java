@@ -1,0 +1,45 @@
+package com.cloverinfosoft.studentattendance.initials;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+import com.cloverinfosoft.studentattendance.R;
+
+public class ForgotPassword extends AppCompatActivity implements View.OnClickListener {
+
+    private Button btn_send,btn_cancel;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_forgot_password);
+        initUI();
+        initListener();
+    }
+
+    public void initUI()
+    {
+        btn_send=(Button)findViewById(R.id.btn_send);
+        btn_cancel=(Button)findViewById(R.id.btn_cancel);
+    }
+
+    public void initListener()
+    {
+        btn_send.setOnClickListener(this);
+        btn_cancel.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId())
+        {
+            case R.id.btn_send:
+                break;
+            case R.id.btn_cancel:
+                finish();
+                break;
+        }
+
+    }
+}

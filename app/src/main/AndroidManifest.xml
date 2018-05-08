@@ -1,36 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.quagnitia.studentattendance">
+
+    package="com.cloverinfosoft.studentattendance">
+
+
+
+
 
     <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
-    <uses-permission android:name="com.android.vending.BILLING" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
-    <uses-permission android:name="android.permission.MANAGE_DOCUMENTS" />
-    <uses-permission android:name="android.hardware.location.network" />
-    <uses-permission android:name="android.hardware.location.gps" />
 
     <application
         android:allowBackup="true"
@@ -39,7 +32,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".initials.SplashScreen"
+            android:name="com.cloverinfosoft.studentattendance.initials.SplashScreen"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,56 +41,56 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DashboardActivity"
+            android:name="com.cloverinfosoft.studentattendance.DashboardActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".initials.LoginActivity"
+            android:name="com.cloverinfosoft.studentattendance.initials.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".initials.RegisterationActivity"
+            android:name="com.cloverinfosoft.studentattendance.initials.RegisterationActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".initials.ForgotPassword"
+            android:name="com.cloverinfosoft.studentattendance.initials.ForgotPassword"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".admin.AddStudentActivity"
+            android:name="com.cloverinfosoft.studentattendance.admin.AddStudentActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".admin.StudentListingActivity"
+            android:name="com.cloverinfosoft.studentattendance.admin.StudentListingActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".admin.AddSubjectActivity"
+            android:name="com.cloverinfosoft.studentattendance.admin.AddSubjectActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".admin.AddClassActivity"
+            android:name="com.cloverinfosoft.studentattendance.admin.AddClassActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".admin.ViewAllClassesActivity"
+            android:name="com.cloverinfosoft.studentattendance.admin.ViewAllClassesActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".admin.ViewAllSubjectsActivity"
+            android:name="com.cloverinfosoft.studentattendance.admin.ViewAllSubjectsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".admin.AddTeacherActivity"
+            android:name="com.cloverinfosoft.studentattendance.admin.AddTeacherActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".admin.ViewAllTeachersActivity"
+            android:name="com.cloverinfosoft.studentattendance.admin.ViewAllTeachersActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".initials.RoleSelectionActivity"
+            android:name="com.cloverinfosoft.studentattendance.initials.RoleSelectionActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".admin.ViewAllStudentActivity" />
-        <activity android:name=".teacher.AttendanceEntryActivity" />
-        <activity android:name=".teacher.AttendanceReportActivity" />
-        <activity android:name=".teacher.AddExamActivity" />
-        <activity android:name=".teacher.ViewAllExamsActivity" />
-        <activity android:name=".teacher.ExamMarksEntry" />
-        <activity android:name=".teacher.ExamResults" />
-        <activity android:name=".teacher.AddHomeworkActivity" />
-        <activity android:name=".teacher.ViewAllHomeworkActivity" />
-        <activity android:name=".teacher.UploadTimeTableActivity" />
-        <activity android:name=".teacher.ViewAllUploads" />
-        <activity android:name=".teacher.ViewImageActivity"></activity>
+        <activity android:name="com.cloverinfosoft.studentattendance.admin.ViewAllStudentActivity" />
+        <activity android:name="com.cloverinfosoft.studentattendance.teacher.AttendanceEntryActivity" />
+        <activity android:name="com.cloverinfosoft.studentattendance.teacher.AttendanceReportActivity" />
+        <activity android:name="com.cloverinfosoft.studentattendance.teacher.AddExamActivity" />
+        <activity android:name="com.cloverinfosoft.studentattendance.teacher.ViewAllExamsActivity" />
+        <activity android:name="com.cloverinfosoft.studentattendance.teacher.ExamMarksEntry" />
+        <activity android:name="com.cloverinfosoft.studentattendance.teacher.ExamResults" />
+        <activity android:name="com.cloverinfosoft.studentattendance.teacher.AddHomeworkActivity" />
+        <activity android:name="com.cloverinfosoft.studentattendance.teacher.ViewAllHomeworkActivity" />
+        <activity android:name="com.cloverinfosoft.studentattendance.teacher.UploadTimeTableActivity" />
+        <activity android:name="com.cloverinfosoft.studentattendance.teacher.ViewAllUploads" />
+        <activity android:name="com.cloverinfosoft.studentattendance.teacher.ViewImageActivity"></activity>
     </application>
 
 </manifest>

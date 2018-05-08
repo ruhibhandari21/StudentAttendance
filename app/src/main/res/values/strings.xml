@@ -15,6 +15,7 @@
     <string name="feeeffect">Fee Effective From </string>
     <string name="studfullname">Students Full Name <font color='#FF0000'>*</font></string>
     <string name="emailid">EmailID <font color='#FF0000'>*</font></string>
+    <string name="contactnumber">Guardian Contact No. <font color='#FF0000'>*</font></string>
 
     <string name="subject_name">Subject Name <font color='#FF0000'>*</font></string>
     <string name="subject_abbreviation">Abbreviation <font color='#FF0000'>*</font></string>
